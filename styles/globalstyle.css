@@ -1,11 +1,32 @@
 * {
 	margin: 0px;
 	padding: 0px;
+	font-family: Helvetica, Arial, sans-serif;
 }
 
 body{
-	background-color: green;
+	background-size: cover;
 	min-height: 100vh;
+}
+
+.format_center {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+}
+
+.login_text {
+	margin-top: 50px;
+	font-size: 20px;
+	height: 25px;
+	width: 60px;
+}
+
+input[type="submit"] {
+	padding: 10px;
+	color: white;
+	background-color: black;
 }
 
 .upper_bar {
@@ -24,10 +45,18 @@ body{
 
 .login_content {
 	margin: auto;
-	height: 80vh;
-	max-width: 40vw;
+	padding: 50px;
+	height: 70vh;
+	max-width: 30vw;
 	margin-bottom: 0px;
-	background-color: blue;
+	background-color: white;
+	border-radius: 20px;
+}
+
+.login_input{
+	font-size: 18px;
+	width: 250px;
+	height: 25px;
 }
 
 .main_container {

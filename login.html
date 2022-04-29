@@ -3,14 +3,43 @@
 <html>
 	<head>
 		<title>Anime Discussion Forum</title>
-		<link rel="stylesheet" type="text/css" media="all" href="styles/globalstyle.css"> 
+		<link rel="stylesheet" type="text/css" media="all" href="styles/globalstyle.css">
+		<script>
+			let i = 0;
+			let str = null;
+			const timer = ms => new Promise(res => setTimeout(res, ms))
+		
+			async function slideShow() {
+				while(true){
+					str = "url("  + "images/" + i.toString() + ".jpg)";
+					document.getElementById("slideshow").style.backgroundImage = str;
+					if(i < 3)
+						i++;
+					else
+						i = 0;
+					await timer(8000);
+				}
+			}
+		</script>	
 	</head>
 	
 	
-	<body>
+	<body id="slideshow" onload="slideShow()">
 		<div class="login_container">
 			<div class="login_content">
-			
+				<img class="format_center" src="images/logo.png"></img>
+				
+			<h4 class="login_text">	
+				Username: <br>
+				<input type="text" class="login_input"/>
+				<br>
+				<br>
+				Password: <br>
+				<input type="text" class="login_input"/>
+				<br>
+				<br>
+				<input type="submit" value="Enter"></input>
+			</h4>
 			
 			
 			</div>
