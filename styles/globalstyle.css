@@ -1,0 +1,43 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body{
+	background-color: green;
+	min-height: 100vh;
+}
+
+.upper_bar {
+	min-height: 52px;
+	position: sticky;
+	top: 0px;
+	z-index: 10;
+	background-color: orange;
+}
+
+.login_container {
+	position: relative;
+	padding-top: 10vh;
+	height: 90vh;
+}
+
+.login_content {
+	margin: auto;
+	height: 80vh;
+	max-width: 40vw;
+	margin-bottom: 0px;
+	background-color: blue;
+}
+
+.main_container {
+	position: relative;
+}
+
+.main_content {
+	margin: 30px auto;
+	min-height: 100vh;
+	max-width: 950px;
+	margin-bottom: 0px;
+	background-color: blue;
+}
