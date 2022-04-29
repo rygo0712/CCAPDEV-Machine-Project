@@ -21,18 +21,14 @@ body{
 }
 
 input[type="text"] {
-	padding: 10px;
+	padding: 5px;
 	color: gray;
 	border-radius: 10px;
 	border: 2px solid #ccc;
 	letter-spacing: 2px;
-	font-size: 14px;
-	height: 15;
+	font-size: 15px;
+	height: 15px;
 	width: 300px;
-}
-
-input[type="text"]:active {
-	
 }
 
 input[type="submit"] {
@@ -59,7 +55,7 @@ input[type="submit"]:hover {
 
 .login_text {
 	letter-spacing: 3px;
-	font-size: 16px;
+	font-size: 15px;
 	color: gray;
 }
 
@@ -72,6 +68,7 @@ input[type="submit"]:hover {
 }
 
 .login_container {
+	
 	position: relative;
 	padding-top: 10vh;
 	height: 90vh;
@@ -80,13 +77,14 @@ input[type="submit"]:hover {
 .login_container h2 {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 .login_content {
 	margin: auto;
 	padding: 50px;
-	height: 400px;
+	padding-top: 30px;
+	height: 420px;
 	max-width: 350px;
 	margin-bottom: 0px;
 	background-color: white;
