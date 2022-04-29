@@ -4,6 +4,17 @@
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+a {
+	transition: 0.2s;
+	color: gray;
+	text-decoration: none;
+}
+
+a:hover {
+	transition: 0.2s;
+	color: #ff7200;
+}
+
 body{
 	background-size: cover;
 	min-height: 100vh;
@@ -15,7 +26,8 @@ input[type="text"] {
 	border-radius: 10px;
 	border: 2px solid #ccc;
 	letter-spacing: 2px;
-	height: 25px;
+	font-size: 14px;
+	height: 15;
 	width: 300px;
 }
 
@@ -48,9 +60,8 @@ input[type="submit"]:hover {
 .login_text {
 	margin-top: 50px;
 	letter-spacing: 3px;
-	font-size: 20px;
+	font-size: 16px;
 	color: gray;
-	
 }
 
 .upper_bar {
@@ -70,17 +81,11 @@ input[type="submit"]:hover {
 .login_content {
 	margin: auto;
 	padding: 50px;
-	height: 65vh;
-	max-width: 30vw;
+	height: 400px;
+	max-width: 350px;
 	margin-bottom: 0px;
 	background-color: white;
 	border-radius: 20px;
-}
-
-.login_input{
-	font-size: 18px;
-	width: 250px;
-	height: 25px;
 }
 
 .main_container {

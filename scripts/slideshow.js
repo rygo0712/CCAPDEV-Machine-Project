@@ -6,7 +6,7 @@ async function slideShow() {
 	while(true){
 		str = "url("  + "images/" + i_slideshow.toString() + ".jpg)";
 		document.getElementById("slideshow").style.backgroundImage = str;
-		if(i < 3)
+		if(i_slideshow < 3)
 			i_slideshow++;
 		else
 			i_slideshow = 0;
