@@ -92,6 +92,30 @@ input[type="submit"]:hover {
 	position: relative;
 }
 
+
+::-webkit-scrollbar {
+      width: 15px;
+}
+
+::-webkit-scrollbar-track {
+      background-color: #ff884d;
+}
+ 
+::-webkit-scrollbar-thumb:hover {
+      background-color: #6e2500;
+} 
+::-webkit-scrollbar-thumb {
+      background-color: #e34c00; 
+} 
+ 
+::-webkit-scrollbar-button {
+      background-color: #6e2500;
+}
+ 
+::-webkit-scrollbar-corner {
+      background-color: ff7200;
+}
+
 .main_content {
 	margin: 30px auto;
 	min-height: 100vh;
