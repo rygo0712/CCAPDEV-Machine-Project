@@ -51,6 +51,7 @@
                 margin-left: 20px;
                 
             }
+
             .shortcutlink
             {
                 width: 90%;
@@ -58,20 +59,41 @@
                 margin-top: 20px;
                 margin-left: 20px;
             }
+
+            #profilepic
+            {
+                width: 50%;
+                height: 100%;
+                
+            }
+            
+            #username
+            {
+                float: right;
+                padding-top: 25%;
+            }
+
         </style>
     </head>
     <body>
             <img class="icon" src="images/logo.png"></img>
             <div class = "search">
-                <input class = "searchinput" placeholder ="Search..." type = "text">       
+                 
+                <form>
+                    <input type="text" placeholder="Search here..." class="searchinput" />
+                    <input type="submit" value="Search" class="searchsubmit" />
+                </form>    
             </div>
             <div class = "shortcut">
-                <p class = "shortcutlink">
-                <a href="https://www.google.com/">Home</a> | <a href="https://www.google.com/">Profile</a> | <a href="https://www.google.com/">Log-out</a>
-                </p>
-                </div>
+                <nav class="shortcutlink">
+                    <a href="home.html">Home</a> |
+                    <a href="view_profile.html">Profile</a> |
+                    <a href="index.html">Logout</a>
+                </nav>
+            </div>
             <div class = "profile">
-
+                <img src="images/kaguya.jpg" id="profilepic"></img>
+                <h5 id="username">okawaiikoto</h5>
             </div>  
 
 
