@@ -17,11 +17,11 @@ a:hover {
 
 body{
 	background-size: cover;
-	background-color: orange;
+	background-color: #ffa56e;
 	min-height: 100vh;
 }
 
-input[type="text"] {
+input[type="text"],input[type="search"] {
 	padding: 5px;
 	color: gray;
 	border-radius: 10px;
@@ -118,7 +118,7 @@ input[type="submit"]:hover {
 .shortcut
 {
 	height: 60px;
-	width: 20%;
+	font-size: 20px;
 	float: left;
 }
 .profile
@@ -134,17 +134,17 @@ input[type="submit"]:hover {
 {
 	width: 80%;
 	height: 18px;
-	margin-top: 20px;
+	margin-top: 12px;
 	border-radius: 10px;
 	border: 2px solid #ccc;
-	padding: 10px;
+	padding: 15px !important;
 	margin-left: 20px;
 	
 }
 
 .searchsubmit 
 {
-	padding: 5px;
+	padding: 10px !important;
 }
 
 .shortcut {
@@ -154,22 +154,28 @@ input[type="submit"]:hover {
 .shortcutlink
 {
 	width: 90%;
-	height: 15;
+	height: 15px;
 	margin-top: 20px;
 	margin-left: 20px;
+}
+
+.profile 
+{
+	padding-right: 5px;
+	width: 150px;
 }
 
 #profilepic
 {
 	object-fit: cover;
+	margin-right: 0px;
 	height: 60px;
-	
 }
 
 #username
 {
 	float: right;
-	padding-top: 25%;
+	padding-top: 24px;
 }
 /* End of Edit Profile/ Home page CSS */
 
@@ -204,5 +210,5 @@ input[type="submit"]:hover {
 	min-height: 100vh;
 	max-width: 950px;
 	margin-bottom: 0px;
-	background-color: blue;
+	background-color: white;
 }
