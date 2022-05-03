@@ -17,6 +17,7 @@ a:hover {
 
 body{
 	background-size: cover;
+	background-color: orange;
 	min-height: 100vh;
 }
 
@@ -44,7 +45,7 @@ input[type="search"] {
 
 input[type="submit"] {
 	transition: 0.3s;
-	padding: 15px;
+	padding: 12px;
 	color: white;
 	font-size: 18px;
 	background-color: #ff7200;
@@ -71,7 +72,7 @@ input[type="submit"]:hover {
 }
 
 .upper_bar {
-	min-height: 52px;
+	min-height: 60px;
 	position: sticky;
 	top: 0px;
 	z-index: 10;
@@ -155,6 +156,85 @@ input[type="submit"]:hover {
 .user-container h5 {
 	font-size: 9px;
 }
+
+
+
+/* Edit Profile/ Home page CSS */
+.upper
+{
+	height: 60px;
+	max-width: 100%;
+}
+.icon
+{
+	object-fit: cover;
+	height: 50px;               
+	float: left;
+}
+.search
+{
+	height: 60px;
+	width: 40%;
+	float: left;
+}
+.shortcut
+{
+	height: 60px;
+	width: 20%;
+	float: left;
+}
+.profile
+{
+	position: relative;
+	height: 60px;
+	width: 10%;
+	background-color: orange;
+	float: right;
+	
+}
+.searchinput
+{
+	width: 80%;
+	height: 18px;
+	margin-top: 20px;
+	border-radius: 10px;
+	border: 2px solid #ccc;
+	padding: 10px;
+	margin-left: 20px;
+	
+}
+
+.searchsubmit 
+{
+	padding: 5px;
+}
+
+.shortcut {
+	width: 20%
+}
+
+.shortcutlink
+{
+	width: 90%;
+	height: 15;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+#profilepic
+{
+	object-fit: cover;
+	height: 60px;
+	
+}
+
+#username
+{
+	float: right;
+	padding-top: 25%;
+}
+/* End of Edit Profile/ Home page CSS */
+
 
 
 
