@@ -27,14 +27,13 @@
             .shortcut
             {
                 height: 60px;
-                width: 20%;
+                width: 200;
                 float: left;
             }
             .profile
             {
                 height: 60px;
-                width: 10%;
-                background-color: orange;
+                width: 200px;
                 float: left;
                 
             }
@@ -60,17 +59,21 @@
 
             #profilepic
             {
-                width: 50%;
-                height: 100%;
-                
+                width: auto;
+                height: 60px;
+                float: left;
+            }
+            .username
+            {
+                text-align: center;
+                margin: 5px;
+
+                font-size: x-large;
+                border-radius: 10px;
+                border: 2px solid #ccc;
+                padding: 10px;
             }
             
-            #username
-            {
-                float: right;
-                padding-top: 25%;
-            }
-
         </style>
     </head>
     <body>
@@ -89,9 +92,9 @@
                     <a href="index.html">Logout</a>
                 </nav>
             </div>
-            <div class = "profile">
                 <img src="images/kaguya.jpg" id="profilepic"></img>
-                <h5 id="username">okawaiikoto</h5>
+            <div class = "profile">
+               <p class="username"> <a href="view_profile.html">okawaiikoto </a> </p>
             </div>  
          
     </body>
