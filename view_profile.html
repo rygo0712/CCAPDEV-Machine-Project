@@ -13,35 +13,56 @@
             width: 200px;
             height: 200px;
         }
+        
+        #profile-right
+        {
+            float: right;
+            width: 50%;
+            position: relative;
+            right: 100px;
+        }
+
+        #profile
+        {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+
     </style>
 </head>
 <body>
     
     <p>Profile > View Profile</p>
+<div id="profile">
 
-    <div class="profile-image">
-        <h2>username1234</h2>
-        <img src="images/kaguya.jpg" />
+    
+    <div id="profile-left">
+        <div class="profile-image">
+            <h2>username1234</h2>
+            <img src="images/kaguya.jpg" />
+        </div>
+
+        <div id="bio">
+            <h3>Bio</h3>
+            <p id="bio-text" >
+                Hi! I like watching anime!! Let's be friends! :)
+            </p>
+        </div>
+        
+        <div id="recent-activity">
+            <p id="recent-activity-text">
+                12/30/20: Commented on username321's post <br>
+                12/25/20: Made a post <br>
+                12/20/20: Commented on username436's post
+            </p>
+        </div>
     </div>
-
-    <div id="bio">
-        <h3>Bio</h3>
-        <p id="bio-text" >
-            Hi! I like watching anime!! Let's be friends! :)
-        </p>
-    </div>
-
-    <div id="recent-activity">
-        <p id="recent-activity-text">
-            12/30/20: Commented on username321's post <br>
-            12/25/20: Made a post <br>
-            12/20/20: Commented on username436's post
-        </p>
-    </div>
-
-    <div id="character-display">
+    
+    <div id="profile-right">
         <h3>username1234's favorite character</h3>
         <img src="images/kaguya.jpg" />
-    </div>
+    </div>  
+</div>
 </body>
 </html>
