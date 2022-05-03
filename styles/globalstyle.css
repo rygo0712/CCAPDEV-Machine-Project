@@ -31,6 +31,17 @@ input[type="text"] {
 	width: 300px;
 }
 
+input[type="search"] {
+	padding: 15px;
+	color: gray;
+	border-radius: 10px;
+	border: 2px solid #ccc;
+	letter-spacing: 2px;
+	font-size: 15px;
+	height: 15px;
+	width: 300px;
+}
+
 input[type="submit"] {
 	transition: 0.3s;
 	padding: 15px;
@@ -64,7 +75,7 @@ input[type="submit"]:hover {
 	position: sticky;
 	top: 0px;
 	z-index: 10;
-	background-color: orange;
+	background-color: white;
 }
 
 .login_container {
@@ -93,7 +104,58 @@ input[type="submit"]:hover {
 
 .main_container {
 	position: relative;
+	background-color: orange;
 }
+
+.main_content {
+	
+}
+
+.relative-container {
+	position: relative;
+}
+
+.logo-container {
+	width: 200px;
+	position: absolute;
+	top: 30%;
+	right: 84%;
+}
+
+.logo-container img {
+	width: 200px;
+	object-fit: cover;
+}
+
+.search-container {
+	position: absolute;
+	top: 0%;
+	right: 50%;
+}
+
+.navigation-container {
+	position: absolute;
+	top: 0%;
+	right: 50vw;
+}
+
+.user-container {
+	width: 75px;
+	object-fit: cover;
+	position: absolute;
+	right: 0%;
+	top: 0%;
+}
+
+.user-container img {
+	width: 40px;
+	object-fit: cover;
+}
+
+.user-container h5 {
+	font-size: 9px;
+}
+
 
 
 ::-webkit-scrollbar {
