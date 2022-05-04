@@ -1,68 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" media="all" href="styles/globalstyle.css">
-    <title>View Profile</title>
-    <style type="text/css">
-        img
-        {
-            border-radius: 50%;
-            width: 200px;
-            height: 200px;
-        }
-        
-        #profile-right
-        {
-            float: right;
-            width: 50%;
-            position: relative;
-            right: 100px;
-        }
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" media="all" href="styles/globalstyle.css">
+		<title>View Profile | AniMatrix</title>
+    </head>
+    <body>		
+		<div class="upper_bar">
+			<img class="icon" src="images/logo.png"></img>
+				<div class = "search">
+					 
+					<form>
+						<input type="search" placeholder="Search here..." class="searchinput" />
+						<input type="submit" value="Search" class="searchsubmit" />
+					</form>    
+				</div>
+				<div class = "shortcut">
+					<nav class="shortcutlink">
+						<a href="home.html">Home</a> |
+						<a href="view_profile.html">Profile</a> |
+						<a href="index.html">Logout</a>
+					</nav>
+				</div>
+				<div class = "profile">
+					<img src="images/kaguya.jpg" id="profilepic"></img>
+					<h5 id="username">okawaiikoto</h5>
+				</div>
+		</div>
+		<div class="main_content">
+			<p>Profile > View Profile</p>
+				<div id="profile">
+					<div id="profile-left">
+						<div class="profile-image">
+							<h2>username1234</h2>
+							<img class="profile-pic" src="images/kaguya.jpg" />
+						</div>
 
-        #profile
-        {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-        }
-
-
-    </style>
-</head>
-<body>
-    
-    <p>Profile > View Profile</p>
-<div id="profile">
-
-    
-    <div id="profile-left">
-        <div class="profile-image">
-            <h2>username1234</h2>
-            <img src="images/kaguya.jpg" />
-        </div>
-
-        <div id="bio">
-            <h3>Bio</h3>
-            <p id="bio-text" >
-                Hi! I like watching anime!! Let's be friends! :)
-            </p>
-        </div>
-        
-        <div id="recent-activity">
-            <p id="recent-activity-text">
-                12/30/20: Commented on username321's post <br>
-                12/25/20: Made a post <br>
-                12/20/20: Commented on username436's post
-            </p>
-        </div>
-    </div>
-    
-    <div id="profile-right">
-        <h3>username1234's favorite character</h3>
-        <img src="images/kaguya.jpg" />
-    </div>  
-</div>
-</body>
+						<div id="bio">
+							<h3>Bio</h3>
+							<p id="bio-text" >
+								Hi! I like watching anime!! Let's be friends! :)
+							</p>
+						</div>
+						
+						<div id="recent-activity">
+							<p id="recent-activity-text">
+								12/30/20: Commented on username321's post <br>
+								12/25/20: Made a post <br>
+								12/20/20: Commented on username436's post
+							</p>
+						</div>
+					</div>
+					
+					<div id="profile-right">
+						<h3>username1234's favorite character</h3>
+						<img class="profile-pic" src="images/kaguya.jpg" />
+					</div>  
+			</div>
+         
+    </body>
 </html>
