@@ -12,8 +12,12 @@
         <div class="logo-content">
             <img src="images/logo.png"></img>
         </div>
-        <div class="search">
-            <input type="text" placeholder="Search here..." />
+        <div class="search-input">
+            <form id="search">
+                <input type="text" id="search-text" placeholder="Search here..." />
+                <!-- input type=submit will submit the text on Enter key press -->
+                <input type="submit" value="search" />
+            </form>
         </div>
         <div class="navigation-content">
             <nav>
@@ -40,19 +44,18 @@
 
     <div class="posts-container">
         <h1>Latest Posts</h1> 
-
+        
+        <!-- Sample post -->
         <div class="post">
-            <div class="post-score">1246</div>
+            <span class="post-score">1246</span>
             <img src="images/like.png"></img>
-            <div class="post-title">Spy X Family Reaction Episode 1</div>
             <div class="post-details">
+                <span class="post-title">Spy X Family Reaction Episode 1</span>
                 <span class="posted-by">posted by: anyabestgirl</span>
                 <span class="post-duration">8 hours ago</span>
             </div>
-            <br>
-            <div class="comment-count">1528 comments</div> 
+            <span class="comment-count">1528 comments</span>
             <button class="view-post">View Post</button>
-
         </div>
 
         <!-- button for expanding posts on the page-->
