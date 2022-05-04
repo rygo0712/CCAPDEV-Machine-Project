@@ -16,6 +16,11 @@ a:hover {
 	color: #ff7200;
 }
 
+button:hover
+{
+	cursor: pointer;
+}
+
 body{
 	background-size: cover;
 	background-color: #ffb787;
@@ -51,6 +56,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
 	transition: 0.3s;
 	background-color: gray;
+	cursor: pointer;
 }
 
 img {
@@ -107,7 +113,8 @@ img {
 }
 
 
-.main_content, .comments, .main_content_viewprofile {
+.main_content, .comments, .main_content_profile, .main_content_editprofile 
+{
 	margin: 30px auto;
 	padding: 50px;
 	max-width: 850px;
@@ -257,11 +264,11 @@ img {
 	float: right;
 	padding-top: 24px;
 }
-/* End of Edit Profile/Home page CSS */
+/* End of Home page CSS */
 
 
 /* view profile */
-.profile-pic-viewprofile
+.profile-pic-profile, .profile-pic-editprofile
 {
 	border-radius: 50%;
 	width: 200px;
@@ -288,17 +295,17 @@ img {
 	grid-template-columns: 1fr 1fr;
 }
 
-.username-viewprofile
+.username-profile
 {
 	margin-top: 20px;
 }
 
-.quote-header-viewprofile, .bio-header-viewprofile, .recentactivity-header-viewprofile, .favechar-header-viewprofile
+.quote-header-profile, .bio-header-profile, .recentactivity-header-profile
 {
 	margin: 20px 0px 20px 0px;
 }
 
-.quote-text-viewprofile, .bio-text-viewprofile, .recentactivity-text-viewprofile
+.quote-text-profile, .bio-text-profile, .recentactivity-text-profile
 {
 	border: 1px solid gray;
 	border-radius: 10px;
@@ -306,12 +313,13 @@ img {
 	width: 350px;
 }
 
-.favechar-header-viewprofile
+.favechar-header-profile
 {
 	overflow: hidden;
 	white-space: nowrap;
+	margin-top: 20px;
 }
-
+/*
 .favechar-name-viewprofile
 {
 	margin-bottom: 15px;
@@ -320,12 +328,13 @@ img {
 	font-size: 125%;
 	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
 }
-
-.favechar-img-viewprofile
+*/
+.favechar-img-profile, .favechar-img-editprofile
 {
 	border-radius: 15%;
 	width: 250px;
 	height: 250px;
+	margin-top: 25px;
 }
 
 .editprofilebtn-viewprofile
@@ -338,6 +347,99 @@ img {
 
 /* end of view profile */
 
+/* edit profile */
+.savechangesbtn-editprofile
+{
+	float: left;
+	margin: 50px 15px 15px 0px;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+.editquote-box, .editbio-box {
+	width: 350px;
+	word-wrap: break-word;
+	padding-bottom: 300px !important;
+	padding-top: 10px !important;
+	margin-top: 10px;
+	background-color: transparent;
+	letter-spacing: normal;
+	border: 1px solid gray;
+	font-size: 100%;
+	overflow: hidden;
+	padding-bottom: 20px !important;
+	height: auto;
+}
+
+.changeprofilepic-editprofile, .changefavecharpic-editprofile
+{
+	display: none;
+}
+
+/* styles and overrides for hover-on-image for changing pics */
+
+.profilepic-container-editprofile
+{
+	position: relative;
+	width: 200px;
+	height: 200px;
+	margin: 25px;
+}
+
+.favecharpic-container-editprofile
+{
+	position: relative;
+	width: 250px;
+	height: 250px;
+	margin: 25px;
+}
+
+.profile-pic-editprofile, .favechar-img-editprofile
+{
+	margin: auto;
+}
+
+.overlay-editprofile, .overlay-favechar-editprofile
+{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: .5s ease;
+	background-color: gray;
+	border-radius: 50%;
+}
+
+.overlay-favechar-editprofile
+{
+	border-radius: 15%;
+}
+
+.profilepic-container-editprofile:hover .overlay-editprofile, .favecharpic-container-editprofile:hover .overlay-favechar-editprofile
+{
+	opacity: 0.75;
+	visibility: visible;
+	cursor: pointer;
+}
+
+.overlaytext-editprofile, .overlaytext-favechar-editprofile
+{
+	color: white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	text-align: center;
+	font-style: bold;
+}
+
+/* end of edit profile */
 
 ::-webkit-scrollbar {
       width: 15px;
@@ -363,5 +465,5 @@ img {
 }
 
 .comment-box::-webkit-scrollbar {
-   display: none;
- }
+	display: none;
+}
