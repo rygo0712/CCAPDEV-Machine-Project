@@ -97,12 +97,12 @@ input[type="submit"]:hover {
 	position: relative;
 }
 
-.main_content {
+.main_content_viewprofile {
 	margin: 30px auto;
 	padding: 50px;
 	max-width: 850px;
 	margin-bottom: 0px;
-	background-color: white;
+	background-color:#fffae8;
 }
 
 
@@ -174,14 +174,14 @@ input[type="submit"]:hover {
 	width: 150px;
 }
 
-#profilepic
+.profilepic-display
 {
 	object-fit: cover;
 	margin-right: 0px;
 	height: 60px;
 }
 
-#username
+.username-display
 {
 	float: right;
 	padding-top: 24px;
@@ -190,19 +190,25 @@ input[type="submit"]:hover {
 
 
 /* view profile */
-.profile-pic
+.profile-pic-viewprofile
 {
 	border-radius: 50%;
 	width: 200px;
 	height: 200px;
+	margin: 25px;
 }
 
-.profile-right
+.profile-left-container
+{
+	float: left;
+	position: relative;
+}
+
+.profile-right-container
 {
 	float: right;
-	width: 50%;
 	position: relative;
-	right: 100px;
+	right: -60px;
 }
 
 .profile-container
@@ -210,6 +216,55 @@ input[type="submit"]:hover {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 }
+
+.username-viewprofile
+{
+	margin-top: 20px;
+}
+
+.quote-header-viewprofile, .bio-header-viewprofile, .recentactivity-header-viewprofile, .favechar-header-viewprofile
+{
+	margin: 20px 0px 20px 0px;
+}
+
+.quote-text-viewprofile, .bio-text-viewprofile, .recentactivity-text-viewprofile
+{
+	border: 1px solid gray;
+	border-radius: 10px;
+	padding: 10px;
+	width: 350px;
+}
+
+.favechar-header-viewprofile
+{
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.favechar-name-viewprofile
+{
+	margin-bottom: 15px;
+	overflow: hidden;
+	white-space: nowrap;
+	font-size: 125%;
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+}
+
+.favechar-img-viewprofile
+{
+	border-radius: 15%;
+	width: 250px;
+	height: 250px;
+}
+
+.editprofilebtn-viewprofile
+{
+	float: right;
+	margin: 15px 150px 50px 50px;
+	padding: 5px;
+	border-radius: 5px;
+}
+
 /* end of view profile */
 
 
