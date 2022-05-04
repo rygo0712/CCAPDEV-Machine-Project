@@ -185,9 +185,31 @@ input[type="submit"]:hover {
 	float: right;
 	padding-top: 24px;
 }
-/* End of Edit Profile/ Home page CSS */
+/* End of Edit Profile/Home page CSS */
 
 
+/* view profile */
+.profile-pic
+{
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+}
+
+#profile-right
+{
+	float: right;
+	width: 50%;
+	position: relative;
+	right: 100px;
+}
+
+#profile
+{
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+/* end of view profile */
 
 
 ::-webkit-scrollbar {
