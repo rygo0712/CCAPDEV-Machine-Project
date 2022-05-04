@@ -196,7 +196,7 @@ input[type="submit"]:hover {
 	height: 200px;
 }
 
-#profile-right
+.profile-right
 {
 	float: right;
 	width: 50%;
@@ -204,7 +204,7 @@ input[type="submit"]:hover {
 	right: 100px;
 }
 
-#profile
+.profile-container
 {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
