@@ -7,11 +7,24 @@
     <link rel="stylesheet" type="text/css" media="all" href="styles/globalstyle.css">
     <title>View Profile</title>
     <style type="text/css">
-        img
+        *
+        {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .profileimg
         {
             border-radius: 50%;
             width: 200px;
             height: 200px;
+            margin: 25px;
+        }
+
+        .profile-left
+        {
+            margin: 50px;
         }
         
         #profile-right
@@ -28,30 +41,40 @@
             grid-template-columns: 1fr 1fr;
         }
 
+        #favecharimg
+        {
+            border-radius: 20%;
+        }
+
+        #recent-activity-text
+        {
+            border: 1px groove gray;
+        }
+
 
     </style>
 </head>
 <body>
     
-    <p>Profile > View Profile</p>
+    <h2>Profile > View Profile</h2>
 <div id="profile">
 
     
-    <div id="profile-left">
-        <div class="profile-image">
+    <div class="profile-left">
+        <div class="profile-image-container">
             <h2>username1234</h2>
-            <img src="images/kaguya.jpg" />
+            <img src="images/kaguya.jpg" class="profileimg"/>
         </div>
 
-        <div id="bio">
+        <div class="bio">
             <h3>Bio</h3>
-            <p id="bio-text" >
+            <p class="bio-text" >
                 Hi! I like watching anime!! Let's be friends! :)
             </p>
         </div>
         
-        <div id="recent-activity">
-            <p id="recent-activity-text">
+        <div class="recent-activity">
+            <p class="recent-activity-text">
                 12/30/20: Commented on username321's post <br>
                 12/25/20: Made a post <br>
                 12/20/20: Commented on username436's post
@@ -59,9 +82,9 @@
         </div>
     </div>
     
-    <div id="profile-right">
+    <div class="profile-right">
         <h3>username1234's favorite character</h3>
-        <img src="images/kaguya.jpg" />
+        <img src="images/kaguya.jpg" id="favecharimg"/>
     </div>  
 </div>
 </body>
