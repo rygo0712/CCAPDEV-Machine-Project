@@ -23,7 +23,7 @@ body{
 }
 
 input[type="text"],input[type="search"] {
-	padding: 5px;
+	padding: 12px;
 	color: gray;
 	border-radius: 10px;
 	border: 2px solid #ccc;
@@ -86,8 +86,8 @@ input[type="submit"]:hover {
 	margin: auto;
 	padding: 50px;
 	padding-top: 30px;
-	height: 420px;
-	max-width: 350px;
+	height: 500px;
+	max-width: 450px;
 	margin-bottom: 0px;
 	background-color: white;
 	border-radius: 20px;
