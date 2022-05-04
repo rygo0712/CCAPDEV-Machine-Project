@@ -22,7 +22,12 @@ body{
 	min-height: 100vh;
 }
 
-input[type="text"],input[type="search"] {
+textarea {
+	resize: none;
+	color: black !important;
+}
+
+input[type="text"],input[type="search"], textarea {
 	padding: 12px;
 	color: gray;
 	border-radius: 10px;
@@ -46,6 +51,10 @@ input[type="submit"] {
 input[type="submit"]:hover {
 	transition: 0.3s;
 	background-color: gray;
+}
+
+img {
+	object-fit: cover;
 }
 
 .format_center {
@@ -105,16 +114,63 @@ input[type="submit"]:hover {
 	background-color: white;
 }
 
-.main_content h1 {
-	margin-top: 12px;
-	font-size: 26px;
-}
-
 .image-post {
-	object-fit: cover;
 	width: 100%;
 }
 
+.text-post {
+	margin: 10px;
+	font-size: 15px;
+}
+
+.normal-like-button {
+	float: left;
+	height: 26px;
+}
+
+.normal-like-count {
+	float: left;
+	font-size: 12px;
+	margin-top: 8px;
+	margin-left: 10px;
+}
+
+.post-title {
+	float: left;
+	font-size: 26px;
+}
+
+
+.comment-buttons {
+	size: auto;
+	margin-top: 10px;
+}
+
+
+
+/* for title, like and count of main post */
+.post-header {
+	margin-top: 20px;
+}
+
+.comment-box {
+	width: 100% !important;
+	word-wrap: break-word;
+	overflow: scroll;
+	padding-bottom: 300px !important;
+	padding-top: 10px !important;
+	margin-top: 10px;
+	font-size: 18px !important;
+}
+
+.comment-entry {
+	float: right;
+	margin-left: 40px;
+}
+
+.ending-margin {
+	margin-top: 40px;
+}
 
 /* Edit Profile/ Home page CSS */
 .upper
@@ -184,14 +240,13 @@ input[type="submit"]:hover {
 	width: 150px;
 }
 
-#profilepic
+.profilepic-display
 {
-	object-fit: cover;
 	margin-right: 0px;
 	height: 60px;
 }
 
-#username
+.username-display
 {
 	float: right;
 	padding-top: 24px;
@@ -245,3 +300,7 @@ input[type="submit"]:hover {
 ::-webkit-scrollbar-corner {
       background-color: ff7200;
 }
+
+.comment-box::-webkit-scrollbar {
+   display: none;
+ }
