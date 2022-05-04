@@ -96,6 +96,14 @@ input[type="submit"]:hover {
 	position: relative;
 }
 
+.main_content {
+	margin: 30px auto;
+	padding: 50px;
+	max-width: 850px;
+	margin-bottom: 0px;
+	background-color: white;
+}
+
 
 /* Edit Profile/ Home page CSS */
 .upper
@@ -203,12 +211,4 @@ input[type="submit"]:hover {
  
 ::-webkit-scrollbar-corner {
       background-color: ff7200;
-}
-
-.main_content {
-	margin: 30px auto;
-	min-height: 100vh;
-	max-width: 950px;
-	margin-bottom: 0px;
-	background-color: white;
 }
