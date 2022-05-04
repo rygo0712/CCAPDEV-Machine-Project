@@ -166,6 +166,11 @@ img {
 .comment-entry {
 	float: right;
 	margin-left: 40px;
+	border: 2px;
+}
+
+.comment-text {
+	
 }
 
 .ending-margin {
