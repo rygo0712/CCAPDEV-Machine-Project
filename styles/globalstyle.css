@@ -129,6 +129,7 @@ img {
 .text-post {
 	margin: 10px;
 	font-size: 15px;
+	line-height: 25px;
 }
 
 .normal-like-button {
@@ -143,22 +144,26 @@ img {
 	margin-left: 10px;
 }
 
-.post-title {
-	float: left;
-	font-size: 26px;
-}
-
-
-.comment-buttons {
-	size: auto;
-	margin-top: 10px;
-}
 
 
 
 /* for title, like and count of main post */
 .post-header {
 	margin-top: 20px;
+}
+
+.post-title {
+	font-size: 26px;
+}
+
+.post-poster-time {
+	float: right;
+	font-size: 12px;
+}
+
+.comment-buttons {
+	size: auto;
+	margin-top: 10px;
 }
 
 .comment-box {
@@ -171,14 +176,17 @@ img {
 	font-size: 18px !important;
 }
 
-.comment-entry {
-	float: right;
-	margin-left: 40px;
-	border: 2px;
+.comment-thread {
+	margin-top: 30px;
+	background-color: #ffb787;
+	padding: 20px;
+	width: 100%;
 }
 
-.comment-text {
-	
+.comment-entry {
+	background-color: white;
+	width: 100%;
+	padding: 15px;
 }
 
 .ending-margin {
