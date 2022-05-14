@@ -129,6 +129,7 @@ img {
 .text-post {
 	margin: 10px;
 	font-size: 15px;
+	line-height: 25px;
 }
 
 .normal-like-button {
@@ -143,22 +144,26 @@ img {
 	margin-left: 10px;
 }
 
-.post-title {
-	float: left;
-	font-size: 26px;
-}
-
-
-.comment-buttons {
-	size: auto;
-	margin-top: 10px;
-}
 
 
 
 /* for title, like and count of main post */
 .post-header {
 	margin-top: 20px;
+}
+
+.post-title {
+	font-size: 26px;
+}
+
+.post-poster-time {
+	float: right;
+	font-size: 12px;
+}
+
+.comment-buttons {
+	size: auto;
+	margin-top: 10px;
 }
 
 .comment-box {
@@ -171,14 +176,52 @@ img {
 	font-size: 18px !important;
 }
 
-.comment-entry {
-	float: right;
-	margin-left: 40px;
-	border: 2px;
+.comment-thread {
+	margin-top: 30px;
+	background-color: #ffb787;
+	padding: 20px;
+	width: 100%;
+	overflow: hidden;
 }
 
-.comment-text {
-	
+.comment-entry {
+	float: right; 
+	background-color: white;
+	width: 100%;
+	padding: 15px;
+}
+
+.comment-entry2 {
+	float: right; 
+	margin-top: 10px;
+	border-left: 5px solid #e34c00;
+	background-color: white;
+	width: 95%;
+	padding: 15px;
+}
+
+.comment-entry3 {
+	float: right; 
+	margin-top: 10px;
+	border-left: 5px solid #e34c00;
+	background-color: white;
+	width: 90%;
+	padding: 15px;
+}
+
+.comment-likedate-container {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	margin-bottom: 5px;
+}
+
+.comment-reply {
+	float: left;
+	margin-top: 8px;
+	margin-left: 15px;
+	color: #e34c00;
+	font-size: 12px;
 }
 
 .ending-margin {
