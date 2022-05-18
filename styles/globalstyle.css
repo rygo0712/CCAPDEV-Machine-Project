@@ -113,13 +113,23 @@ img {
 }
 
 
-.main_content, .comments, .main_content_profile, .main_content_editprofile 
+.main_content, .comments, .main_content_editprofile 
 {
 	margin: 30px auto;
 	padding: 50px;
 	max-width: 850px;
 	margin-bottom: 0px;
+	background-color: #fffae8;
+	overflow: hidden;
+}
+
+.post-thread, .main_content_profile
+{
+	margin: 30px auto;
+	padding: 50px;
+	max-width: 850px;
 	background-color:#fffae8;
+	overflow: hidden;
 }
 
 .image-post {
@@ -161,6 +171,28 @@ img {
 	font-size: 12px;
 }
 
+.post-entry {
+	float: right; 
+	background-color: white;
+	width: 100%;
+	padding: 15px;
+	margin-top: 20px;
+}
+
+.view-more{
+	float: right; 
+	background-color: white;
+	width: 100%;
+	padding: 15px;
+	margin-top: 20px;
+	text-align: center;
+}
+
+
+.post-entry:hover{
+	cursor: pointer;
+}
+
 .comment-buttons {
 	size: auto;
 	margin-top: 10px;
@@ -169,13 +201,30 @@ img {
 .comment-box {
 	width: 100% !important;
 	word-wrap: break-word;
-	overflow: scroll;
+	overflow: hidden;
 	padding-bottom: 300px !important;
 	padding-top: 10px !important;
 	margin-top: 10px;
 	font-size: 18px !important;
 }
-
+.title-box{
+	width: 100% !important;
+	word-wrap: break-word;
+	overflow: hidden;
+	padding-bottom: 30px !important;
+	padding-top: 10px !important;
+	margin-top: 10px;
+	font-size: 18px !important;
+}
+.content-box{
+	width: 100% !important;
+	word-wrap: break-word;
+	overflow: hidden;
+	padding-bottom: 100px !important;
+	padding-top: 10px !important;
+	margin-top: 10px;
+	font-size: 18px !important;
+}
 .comment-thread {
 	margin-top: 30px;
 	background-color: #ffb787;
@@ -223,7 +272,13 @@ img {
 	color: #e34c00;
 	font-size: 12px;
 }
-
+.thread-title{
+	float: left;
+	margin-top: 8px;
+	margin-left: 15px;
+	color: #e34c00;
+	font-size: 16px;
+}
 .ending-margin {
 	margin-top: 40px;
 }
