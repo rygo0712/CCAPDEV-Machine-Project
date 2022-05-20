@@ -63,6 +63,10 @@ img {
 	object-fit: cover;
 }
 
+#slideshow {
+	transition: 1s;
+}
+
 .format_center {
 	display: block;
 	margin-left: auto;
@@ -83,6 +87,8 @@ img {
 	z-index: 10;
 	background-color: white;
 }
+
+
 
 .login_container {
 	
@@ -177,15 +183,19 @@ img {
 	width: 100%;
 	padding: 15px;
 	margin-top: 20px;
+	border: 2px solid #ccc;
 }
 
 .view-more{
 	float: right; 
-	background-color: white;
+	color: #6e2500;
+	background-color: #ff884d;
 	width: 100%;
 	padding: 15px;
 	margin-top: 20px;
 	text-align: center;
+	
+	
 }
 
 
@@ -294,11 +304,12 @@ img {
 	object-fit: cover;
 	height: 50px;               
 	float: left;
+	margin-left: 1%;
 }
 .search
 {
 	height: 60px;
-	width: 40%;
+	width: 35%;
 	float: left;
 }
 .shortcut
@@ -306,7 +317,33 @@ img {
 	height: 60px;
 	font-size: 20px;
 	float: left;
+	width: 25%;
 }
+
+
+.shortcutlink
+{
+	width: 90%;
+	height: 15px;
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.shortcutlink a 
+{
+	padding: 3%;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 1px solid #ff7200;
+	border-radius: 10px;
+	color: #ff7200;
+}
+
+.shortcutlink a:hover
+{
+	color: #gray;
+}
+
 .profile
 {
 	position: relative;
@@ -318,11 +355,8 @@ img {
 }
 .searchinput
 {
-	width: 80%;
-	height: 18px;
+	width: 75% !important;
 	margin-top: 12px;
-	border-radius: 10px;
-	border: 2px solid #ccc;
 	padding: 15px !important;
 	margin-left: 20px;
 	
@@ -331,18 +365,6 @@ img {
 .searchsubmit 
 {
 	padding: 10px !important;
-}
-
-.shortcut {
-	width: 20%
-}
-
-.shortcutlink
-{
-	width: 90%;
-	height: 15px;
-	margin-top: 20px;
-	margin-left: 20px;
 }
 
 .profile 
