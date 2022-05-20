@@ -63,6 +63,10 @@ img {
 	object-fit: cover;
 }
 
+#slideshow {
+	transition: 1s;
+}
+
 .format_center {
 	display: block;
 	margin-left: auto;
