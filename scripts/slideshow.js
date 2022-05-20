@@ -1,8 +1,7 @@
-let i_slideshow = 0;
-let str = null;
-const timer = ms => new Promise(res => setTimeout(res, ms))
-
 async function slideShow() {
+	let i_slideshow = 0;
+	let str = null;
+	const timer = ms => new Promise(res => setTimeout(res, ms))
 	while(true){
 		str = "url("  + "images/" + i_slideshow.toString() + ".jpg)";
 		document.getElementById("slideshow").style.backgroundImage = str;
