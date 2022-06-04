@@ -1,11 +1,10 @@
 const mongoose = require('mongoose');
 
-const PostSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     username: String,
 	password: String,
-	image: String
 }); // JSON format, consisting of the name: type collection
 
-const Users = mongoose.model('Users', PostSchema);
+const User = mongoose.model('User', UserSchema);
 
-module.exports = Users;
+module.exports = User;
