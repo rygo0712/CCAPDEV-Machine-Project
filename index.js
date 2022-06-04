@@ -16,17 +16,36 @@ const path = require('path'); // Local path directory for our static resource fo
 app.use(express.json()); // Use JSON throughout our app for parsing
 app.use(express.urlencoded( {extended: true})); // Information consists of more than just strings
 app.use(express.static('public')); // static directory name, meaning that the application will also refer to a folder named 'public'
+app.use(express.static(__dirname + '/'));//use to apply css
 app.use(fileUpload()); // for fileuploading
 
 /* using handlebars */
 var hbs = require('hbs');
 app.set('view engine','hbs');
 
+app.post('/login-post', function(req, res) {
+	
+});
+
 app.get('/', function(req,res)
 {
     res.sendFile(__dirname + '\\' + 'index.html');
 });
 
+app.get('/homepage', function(req,res)
+{
+    res.sendFile(__dirname + '\\' + 'home.html');
+});
+
+app.get('/signin', function(req,res)
+{
+    res.sendFile(__dirname + '\\' + 'signin.html');
+});
+
+app.get('/editprofile', function(req,res)
+{
+    res.sendFile(__dirname + '\\' + 'edit_profile.html');
+});
 
 var server = app.listen(3000, function()
 {

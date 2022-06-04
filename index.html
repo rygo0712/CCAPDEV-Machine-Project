@@ -13,18 +13,20 @@
 			<div class="login_content">
 				<img class="format_center" src="images/logo.png"></img>
 			<h2 class="login_text">Log-in</h2>
-			<h4 class="login_text">	
-				Username: <br>
-				<input type="text"/>
-				<br>
-				<br>
-				Password: <br>
-				<input type="text"/>
-				<br>
-				<br>
-				<input type="submit" onclick="location.href='home.html';" value="Log-in"></input>
-				<br>
-				<br>
+			<h4 class="login_text">
+				<form action="/login-post" method="post" enctype="multipart/form-data">
+					Username: <br>
+					<input  name="username" type="text"/>
+					<br>
+					<br>
+					Password: <br>
+					<input  name="password" type="text"/>
+					<br>
+					<br>
+					<input type="submit" value="Log-in"></input>
+					<br>
+					<br>
+				</form>
 			</h4>
 			
 			<h5>
