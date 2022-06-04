@@ -7,7 +7,6 @@ const PostSchema = new mongoose.Schema({ // Each entry matches the data types in
     user: String,
     postingTime: Date,
     numLikes: Number,
-    
 }) // JSON format, consisting of the name: type collection
 
 const Post = mongoose.model('Post', PostSchema); // Create Post based on schema model

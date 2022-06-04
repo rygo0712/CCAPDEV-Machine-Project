@@ -12,6 +12,13 @@ const fileUpload = require('express-fileupload');
 // Post initializations. 1, the schema model, the path directory for file uploads, and a static resource folder //
 const path = require('path'); // Local path directory for our static resource folder
 
+// Using Schema models
+const Post = require('./database/models/Post');
+const Comment = require('./database/models/Comment');
+const Profile = require('./database/models/Profile');
+const User = require('./database/models/User');
+
+
 // Initialize data and static folder that our app will use
 app.use(express.json()); // Use JSON throughout our app for parsing
 app.use(express.urlencoded( {extended: true})); // Information consists of more than just strings
