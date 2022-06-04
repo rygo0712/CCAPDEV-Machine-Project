@@ -43,6 +43,21 @@ app.get('/editprofile', function(req,res)
     res.sendFile(__dirname + '\\' + 'edit_profile.html');
 });
 
+app.get('/viewprofile', function(req,res)
+{
+    res.sendFile(__dirname + '\\' + 'view_profile.html');
+});
+
+app.get('/viewpost', function(req,res)
+{
+    res.sendFile(__dirname + '\\' + 'view_post.html');
+});
+
+app.get('/viewpost2', function(req,res)
+{
+    res.sendFile(__dirname + '\\' + 'view_post2.html');
+});
+
 var server = app.listen(3000, function()
 {
     console.log("Listening at port 3000");
