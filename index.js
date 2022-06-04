@@ -23,6 +23,10 @@ app.use(fileUpload()); // for fileuploading
 var hbs = require('hbs');
 app.set('view engine','hbs');
 
+app.post('/login-post', function(req, res) {
+	
+});
+
 app.get('/', function(req,res)
 {
     res.sendFile(__dirname + '\\' + 'index.html');
