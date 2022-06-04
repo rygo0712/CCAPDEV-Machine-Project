@@ -1,20 +1,17 @@
-const express = require('express');
-const app = new express();
+var express = require('express');
+var app = express();
 
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/galleryDB',
-{useNewURLParser: true, useUnifiedTopology: true});
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: false}));
+app.use(express.static(__dirname + '/'));
 
-const fileUpload = require('express-fileupload');
+app.get('/', function(req,res)
+{
+    res.sendFile(__dirname + '\\' + 'home.html');
+});
 
-const Post = require("./database/models/Post");
-const path = require('path');
 
-app.use(express.json());
-app.use(express.urlencoded( {extended: true}));
-app.use(express.static('public'));
-app.use(fileUpload());
-
-var hbs = require('hbs');
-app.set('view engine','hbs');
-
+var server = app.listen(3000, function()
+{
+    console.log("Listening at port 3000");
+});
