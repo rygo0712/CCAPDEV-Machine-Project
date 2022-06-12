@@ -4,7 +4,7 @@ const CommentSchema = new mongoose.Schema({ // Each entry matches the data types
     textContent: String,
     imageContent: String,
     user: String,
-    postingTime: Date,
+    postingTime: DateTime,
     numLikes: Number,
     //parent: CommentSchema,
     //children: [CommentSchema] // children attribute is an array of comments

@@ -23,6 +23,7 @@ const User = require('./database/models/User');
 app.use(express.json()); // Use JSON throughout our app for parsing
 app.use(express.urlencoded( {extended: true})); // Information consists of more than just strings
 app.use(express.static('public')); // static directory name, meaning that the application will also refer to a folder named 'public'
+app.use(express.static(__dirname + '/public'));//use to apply css
 app.use(express.static(__dirname + '/'));//use to apply css
 app.use(fileUpload()); // for fileuploading
 
@@ -30,43 +31,44 @@ app.use(fileUpload()); // for fileuploading
 var hbs = require('hbs');
 app.set('view engine','hbs');
 
-app.post('/login-post', function(req, res) {
-	
+app.post('/login-post', function(req, res) 
+{
+	res.sendFile(__dirname + '\\views\\' + 'home.html');  // placeholder before implementing login authentication
 });
 
 app.get('/', function(req,res)
 {
-    res.sendFile(__dirname + '\\' + 'index.html');
+    res.sendFile(__dirname + '\\views\\' + 'index.html');
 });
 
 app.get('/homepage', function(req,res)
 {
-    res.sendFile(__dirname + '\\' + 'home.html');
+    res.sendFile(__dirname + '\\views\\' + 'home.html');
 });
 
 app.get('/signin', function(req,res)
 {
-    res.sendFile(__dirname + '\\' + 'signin.html');
+    res.sendFile(__dirname + '\\views\\' + 'signin.html');
 });
 
 app.get('/editprofile', function(req,res)
 {
-    res.sendFile(__dirname + '\\' + 'edit_profile.html');
+    res.sendFile(__dirname + '\\views\\' + 'edit_profile.html');
 });
 
 app.get('/viewprofile', function(req,res)
 {
-    res.sendFile(__dirname + '\\' + 'view_profile.html');
+    res.sendFile(__dirname + '\\views\\' + 'view_profile.html');
 });
 
 app.get('/viewpost', function(req,res)
 {
-    res.sendFile(__dirname + '\\' + 'view_post.html');
+    res.sendFile(__dirname + '\\views\\' + 'view_post.html');
 });
 
 app.get('/viewpost2', function(req,res)
 {
-    res.sendFile(__dirname + '\\' + 'view_post2.html');
+    res.sendFile(__dirname + '\\views\\' + 'view_post2.html');
 });
 
 var server = app.listen(3000, function()
