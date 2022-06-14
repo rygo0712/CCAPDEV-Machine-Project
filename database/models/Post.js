@@ -5,7 +5,7 @@ const PostSchema = new mongoose.Schema({ // Each entry matches the data types in
     textContent: String,
     imageContent: String,
     user: String,
-    postingTime: DateTime,
+    postingTime: {type: Date, default: Date.now},
     numLikes: Number,
 }) // JSON format, consisting of the name: type collection
 
