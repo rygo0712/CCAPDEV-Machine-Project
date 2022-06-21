@@ -1,10 +1,8 @@
-const express = require('express');
-const app = new express();
+/******* Initializations ************/ 
 
-/***************** Where we will use mongoose */
+const express = require('express');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/galleryDB',
-{useNewURLParser: true, useUnifiedTopology: true}); // Create database connection
+const dotenv = require('dotenv');
 
 // For File Uploads
 const fileUpload = require('express-fileupload');
@@ -12,12 +10,45 @@ const fileUpload = require('express-fileupload');
 // Post initializations. 1, the schema model, the path directory for file uploads, and a static resource folder //
 const path = require('path'); // Local path directory for our static resource folder
 
-// Using Schema models
-const Post = require('./database/models/Post');
-const Comment = require('./database/models/Comment');
-const Profile = require('./database/models/Profile');
-const User = require('./database/models/User');
+// using handlebars 
+const hbs = require('hbs');
 
+// Using body parser for form input
+const bodyParser = require('body-parser');
+
+// Using Schema models
+const Post = require('./models/Post.js');
+const Comment = require('./models/Comment.js');
+const Profile = require('./models/Profile.js');
+const User = require('./models/User.js');
+
+// Using routes
+const routes = require('./routes/routes.js');
+
+// Using db functions
+const db = require('./models/db.js');
+
+
+/********* Using initializations **********/
+
+// Initializing the express app
+const app = express();
+
+// Setting bodyParser
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// Using mongoose 
+mongoose.connect('mongodb://localhost/galleryDB', // change this line to fit URL for our project
+{useNewURLParser: true, useUnifiedTopology: true}); // Create database connection
+
+// Setting hbs and registering partials for rendering
+app.set('view engine','hbs');
+hbs.registerPartials(__dirname + '/views/partials');
+
+// Setting dotenv and port
+dotenv.config();
+port = process.env.PORT;
+hostname = process.env.HOSTNAME;
 
 // Initialize data and static folder that our app will use
 app.use(express.json()); // Use JSON throughout our app for parsing
@@ -26,52 +57,14 @@ app.use(express.static('public')); // static directory name, meaning that the ap
 app.use(express.static(__dirname + '/public'));//use to apply css
 app.use(express.static(__dirname + '/'));//use to apply css
 app.use(fileUpload()); // for fileuploading
+app.use('/', routes); // Use the routes folder to process requests
 
-/* using handlebars */
-var hbs = require('hbs');
-app.set('view engine','hbs');
+/** Setting server */
 
-app.post('/login-post', function(req, res) 
+db.connect();
+
+var server = app.listen(port, hostname, function()
 {
-	res.sendFile(__dirname + '\\views\\' + 'home.html');  // placeholder before implementing login authentication
-});
-
-app.get('/', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'index.html');
-});
-
-app.get('/homepage', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'home.html');
-});
-
-app.get('/signin', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'signin.html');
-});
-
-app.get('/editprofile', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'edit_profile.html');
-});
-
-app.get('/viewprofile', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'view_profile.html');
-});
-
-app.get('/viewpost', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'view_post.html');
-});
-
-app.get('/viewpost2', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'view_post2.html');
-});
-
-var server = app.listen(3000, function()
-{
-    console.log("Listening at port 3000");
+    console.log("Server is running at: ");
+    console.log("http://" + hostname + ":" + port);
 });
