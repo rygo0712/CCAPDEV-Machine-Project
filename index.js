@@ -16,12 +16,6 @@ const hbs = require('hbs');
 // Using body parser for form input
 const bodyParser = require('body-parser');
 
-// Using Schema models
-const Post = require('./models/Post.js');
-const Comment = require('./models/Comment.js');
-const Profile = require('./models/Profile.js');
-const User = require('./models/User.js');
-
 // Using routes
 const routes = require('./routes/routes.js');
 
@@ -35,11 +29,7 @@ const db = require('./models/db.js');
 const app = express();
 
 // Setting bodyParser
-app.use(bodyParser.urlencoded({ extended: false }));
-
-// Using mongoose 
-mongoose.connect('mongodb://localhost/galleryDB', // change this line to fit URL for our project
-{useNewURLParser: true, useUnifiedTopology: true}); // Create database connection
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // Setting hbs and registering partials for rendering
 app.set('view engine','hbs');
@@ -49,6 +39,8 @@ hbs.registerPartials(__dirname + '/views/partials');
 dotenv.config();
 port = process.env.PORT;
 hostname = process.env.HOSTNAME;
+
+console.log(port + " " + hostname);
 
 // Initialize data and static folder that our app will use
 app.use(express.json()); // Use JSON throughout our app for parsing

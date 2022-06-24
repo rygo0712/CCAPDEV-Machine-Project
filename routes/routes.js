@@ -10,10 +10,7 @@ app.post('/login-post', function(req, res)
 	res.sendFile(__dirname + '\\views\\' + 'home.html');  // placeholder before implementing login authentication
 });
 
-app.get('/', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'index.html');
-});
+app.get('/', controller.getIndex);
 
 app.get('/homepage', function(req,res)
 {
@@ -44,3 +41,5 @@ app.get('/viewpost2', function(req,res)
 {
     res.sendFile(__dirname + '\\views\\' + 'view_post2.html');
 });
+
+module.exports = app;
