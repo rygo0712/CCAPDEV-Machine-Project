@@ -11,7 +11,6 @@ const controller = {
     getIndex: function(req, res) {
         res.sendFile(path.resolve('./views/index.html'));
     },
-
     
 
 }
