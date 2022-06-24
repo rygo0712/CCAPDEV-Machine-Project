@@ -63,6 +63,16 @@ app.use(session({
     cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 * 14 }
   }));
 
+// Flash
+app.use(flash());
+
+// Global messages vars
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  next();
+});
+
 /** Setting server */
 
 db.connect();
