@@ -12,6 +12,8 @@ const controller = {
         res.sendFile(path.resolve('./views/index.html'));
     },
 
+    
+
 }
 
 module.exports = controller;
