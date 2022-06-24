@@ -44,3 +44,5 @@ app.get('/viewpost2', function(req,res)
 {
     res.sendFile(__dirname + '\\views\\' + 'view_post2.html');
 });
+
+module.exports = app;
