@@ -14,7 +14,11 @@ router.get('/home', isPrivate, (req, res) => {
   });
 
 router.get('/view-profile', isPrivate, (req, res) => {
-    
+    res.render('view_profile', { pageTitle: 'View Profile', name: req.session.name } );
+  });
+
+router.get('/edit-profile', isPrivate, (req, res) => {
+    res.render('edit_profile', { pageTitle: 'Edit Profile', name: req.session.name } );
   });
 
 router.get('/view-post', isPrivate, (req, res) => {
