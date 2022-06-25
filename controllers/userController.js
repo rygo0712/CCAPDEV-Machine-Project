@@ -22,15 +22,12 @@ exports.registerUser = (req, res) => {
   if (errors.isEmpty()) {
     const { username, email, password } = req.body;
 
-    // Next items go here...
-    // This line can be deleted in the next step.
-    // Adding it so that the error validation can be tested.
-    User.getOne({ email: email }, (err, result) => {
+    User.getOne({ username: username }, (err, result) => {
       if (result) {
         console.log(result);
         // found a match, return to login with error
-        req.flash('error_msg', 'User already exists. Please login.');
-        res.redirect('/login');
+        req.flash('error_msg', 'Username already exists.');
+        res.redirect('/signup');
       } else {
         // no match, create user (next step)
         // for now we redirect to the login with no error.
@@ -50,7 +47,7 @@ exports.registerUser = (req, res) => {
               res.redirect('/signup');
               // res.status(500).send({ message: "Could not create user"});
             } else {
-              req.flash('success_msg', 'You are now registered! Login below.');
+              req.flash('success_msg', 'You are now registered! Ypu may now login above.');
               res.redirect('/login');
             }
           });

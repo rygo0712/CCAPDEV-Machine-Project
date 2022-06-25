@@ -13,7 +13,6 @@
 			<div class="login_content">
 				<img class="format_center" src="images/logo.png"></img>
 			<h2 class="login_text">Sign-up</h2>
-			{{> status_msg}}
 			<h4 class="login_text">	
 				<form action="/signup" method="POST" enctype="application/x-www-form-urlencoded">
 					Email: <br>
@@ -35,8 +34,9 @@
 					<input type="submit" value="Sign-up"></input>
 					<br>
 					<br>
-				</form>	
+				</form>
 			</h4>
+				{{> status_msg}}
 			</div>
 			
 		</div>
