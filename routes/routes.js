@@ -1,49 +1,23 @@
-const express = require('express');
+const router = require('express').Router();
 // Use the controller to process requests
 const controller = require('../controllers/controller.js');
 
-const app = express();
+const { isPrivate } = require('../middlewares/checkAuth'); //requires users to be logged in to access these pages
 
-/** TODO: Replace these with function calls to controller.js */
-/*
-app.post('/login-post', function(req, res) 
-{
-	res.sendFile(__dirname + '\\views\\' + 'home.html');  // placeholder before implementing login authentication
-});
-*/
+router.get('/', isPrivate, (req, res) => {
+    res.render('home', { pageTitle: 'Home', name: req.session.name } );
+  });
 
-app.get('/', controller.getIndex);
+//duplicate route for home
+router.get('/home', isPrivate, (req, res) => {
+    res.render('home', { pageTitle: 'Home', name: req.session.name } );
+  });
 
-app.get('/homepage', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'home.html');
-});
+router.get('/view-profile', isPrivate, (req, res) => {
+    
+  });
 
-/*
-app.get('/signin', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'signin.html');
-});
-*/
-
-app.get('/editprofile', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'edit_profile.html');
-});
-
-app.get('/viewprofile', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'view_profile.html');
-});
-
-app.get('/viewpost', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'view_post.html');
-});
-
-app.get('/viewpost2', function(req,res)
-{
-    res.sendFile(__dirname + '\\views\\' + 'view_post2.html');
-});
-
-module.exports = app;
+router.get('/view-post', isPrivate, (req, res) => {
+    
+  });
+module.exports = router;

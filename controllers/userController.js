@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 exports.registerUser = (req, res) => {
   // 1. Validate request
 
-  // 2. If VALID, find if email exists in users
+  // 2. If VALID, find if username exists in users
   //      NEW USER (no results retrieved)
   //        a. Hash password
   //        b. Create user
@@ -29,8 +29,6 @@ exports.registerUser = (req, res) => {
         req.flash('error_msg', 'Username already exists.');
         res.redirect('/signup');
       } else {
-        // no match, create user (next step)
-        // for now we redirect to the login with no error.
         const saltRounds = 10;
 
         // Hash password
@@ -74,12 +72,65 @@ exports.loginUser = (req, res) => {
   //        a. Redirect to login page with error message
 
   // 3. If INVALID, redirect to login page with errors
-  res.redirect('/');
+  const errors = validationResult(req);
+
+  if (errors.isEmpty()) {
+    const {
+      username,
+      password
+    } = req.body;
+
+    // Next items go here... Same as before, this will be replaced.
+    User.getOne({ username: username }, (err, user) => {
+      if (err) {
+        // Database error occurred...
+        req.flash('error_msg', 'Something happened! Please try again.');
+        res.redirect('/login');
+      } else {
+        // Successful query
+        if (user) {
+          // User found!
+  
+          // Check password with hashed value in the database
+          bcrypt.compare(password, user.password, (err, result) => {
+            // passwords match (result == true)
+            if (result) {
+              // Update session object once matched!
+              req.session.user = user._id;
+              req.session.username = user.username;
+
+              console.log(req.session);
+
+              res.redirect('/');
+            } else {
+              // passwords don't match
+              req.flash('error_msg', 'Incorrect password. Please try again.');
+              res.redirect('/login');
+            }
+          });
+        } else {
+          // No user found
+          req.flash('error_msg', 'No registered user with that username. Create a new account by clicking the link above.');
+          res.redirect('/login');
+        }
+      }
+    });
+  } else {
+    const messages = errors.array().map((item) => item.msg);
+
+    req.flash('error_msg', messages.join(' '));
+    res.redirect('/login');
+  }
 };
 
 exports.logoutUser = (req, res) => {
   // Destroy the session and redirect to login page
-  res.redirect('/login');
+  if (req.session) {
+    req.session.destroy(() => {
+      res.clearCookie('connect.sid');
+      res.redirect('/login');
+    });
+  }
 };
 
 //module.exports = userController;

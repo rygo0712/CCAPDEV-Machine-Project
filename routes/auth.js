@@ -1,26 +1,28 @@
 const router = require('express').Router();
 const userController = require('../controllers/userController');
-const { registrationValidation } = require('../validators.js');
+const { registrationValidation, loginValidation } = require('../validators.js');
+const { isPublic, isPrivate } = require('../middlewares/checkAuth');
+
 
 // GET login to display login page
-router.get('/login', (req, res) => {
+router.get('/login', isPublic, (req, res) => {
   res.render('index', {
     pageTitle: 'Login',
   });
 });
 
 // GET register to display registration page
-router.get('/signup', (req, res) => {
+router.get('/signup', isPublic, (req, res) => {
   res.render('signup', {
     pageTitle: 'Registration',
   });
 });
 
 // POST methods for form submissions
-router.post('/signup', registrationValidation, userController.registerUser);
-router.post('/login', userController.loginUser);
+router.post('/signup', isPublic, registrationValidation, userController.registerUser);
+router.post('/login', isPublic, userController.loginUser, userController.loginUser);
 
 // logout
-router.get('/logout', userController.logoutUser);
+router.get('/logout', isPrivate, userController.logoutUser);
 
 module.exports = router;

@@ -14,8 +14,7 @@ const registrationValidation = [
         .isLength({max: 15}).withMessage("Password must not exceed 16 characters"),
 
   // Confirm Password needs to be min 6 chars AND must match the req.body.password field
-  body('confirmPass').isStrongPassword().withMessage("Password must be at least 8 characters long, and a combination of upper and lowercase characters, numbers and symbols.")
-    .custom((value, { req }) => {
+  body('confirmPass').isStrongPassword().custom((value, { req }) => {
       if (value !== req.body.password) {
         throw new Error("Passwords must match.");
       }
@@ -23,4 +22,12 @@ const registrationValidation = [
     })
 ]
 
-module.exports = { registrationValidation };
+const loginValidation = [
+  // Email should not be empty and must be a valid email
+  body('username').not().isEmpty().withMessage("Username is required."),
+
+  // Password should not be empty and needs to be min 6 chars
+  body('password').not().isEmpty().withMessage("Password is required.")
+];
+
+module.exports = { registrationValidation, loginValidation };
