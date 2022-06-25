@@ -5,10 +5,12 @@ const controller = require('../controllers/controller.js');
 const app = express();
 
 /** TODO: Replace these with function calls to controller.js */
+/*
 app.post('/login-post', function(req, res) 
 {
 	res.sendFile(__dirname + '\\views\\' + 'home.html');  // placeholder before implementing login authentication
 });
+*/
 
 app.get('/', controller.getIndex);
 
@@ -17,10 +19,12 @@ app.get('/homepage', function(req,res)
     res.sendFile(__dirname + '\\views\\' + 'home.html');
 });
 
+/*
 app.get('/signin', function(req,res)
 {
     res.sendFile(__dirname + '\\views\\' + 'signin.html');
 });
+*/
 
 app.get('/editprofile', function(req,res)
 {

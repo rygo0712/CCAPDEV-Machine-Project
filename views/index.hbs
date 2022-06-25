@@ -1,52 +1,45 @@
-{{!Landing page}}
+<!DOCTYPE html>
+
 <html>
-    <head>
-        <meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<head>
+		<title>Anime Discussion Forum</title>
 		<link rel="stylesheet" type="text/css" media="all" href="public/globalstyle.css">
-        <title></title>
-    </head>
-
-    <body>		
-		<div class="upper_bar">
-			<img class="icon" src="images/logo.png"></img>
-				<div class = "search">
-					 
-					<form>
-						<input type="search" placeholder="Search here..." class="searchinput" />
-						<input type="submit" value="Search" class="searchsubmit" />
-					</form>    
-				</div>
-				<div class = "shortcut">
-					<nav class="shortcutlink">
-						<a href="/homepage">Home</a>
-						<a href="/viewprofile">Profile</a>
-						<a href="/">Logout</a>
-					</nav>
-				</div>
-				<div class = "profile">
-					<img src="images/kaguya.jpg" class="profilepic-display"></img>
-					<h5 class="username-display">okawaiikoto</h5>
-				</div>
+		<script src="scripts/slideshow.js"></script>	
+	</head>
+	
+	
+	<body id="slideshow" onload="slideShow()">
+		<div class="login_container">
+			<div class="login_content">
+				<img class="format_center" src="images/logo.png"></img>
+			<h2 class="login_text">Log-in</h2>
+			<h4 class="login_text">
+				<form action="/login" method="POST" enctype="application/x-www-form-urlencoded">
+					Username: <br>
+					<input  name="username" type="text"/>
+					<br>
+					<br>
+					Password: <br>
+					<input  name="password" type="text"/>
+					<br>
+					<br>
+					<input type="submit" value="Log-in"></input>
+					<br>
+					<br>
+				</form>
+			</h4>
+			
+			<h5>
+				<br>
+				<br>
+				<a href="/signup">Create a new account here</a>
+			</h5>
+			<br>
+			<br>
+			Note: No need to place username and password, click "Log-in" button to advance to home page (For phase 1 only, will remove on next phases)
+			</div>
+			
 		</div>
-		<div class="main_content">
-		<h1>
-			Create Post
-		</h1>
-		<textarea class="title-box" wrap="soft" placeholder="Title..."></textarea>
-		<textarea class="content-box" wrap="soft" placeholder="Write content..."></textarea>
-		<div class="comment-buttons"> 
-			<input type="submit" value="Attach media" class="searchsubmit" /> 
-			<input type="submit" value="Publish Post" class="searchsubmit" />
-		</div>
-		</div>
-        <div class="post-thread">
-			<h1>
-				Latest Post
-			</h1><br>
-		</div>
-    </body> 
+	</body>
 </html>
-
 

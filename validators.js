@@ -2,8 +2,8 @@ const { body } = require('express-validator');
 
 const registrationValidation = [
 
-    // Name should not be empty
-  body('name').not().isEmpty().withMessage("Name is required."),
+    // Uname should not be empty
+  body('username').not().isEmpty().withMessage("Username is required."),
 
   // Email should not be empty and must be a valid email
   body('email').not().isEmpty().withMessage("Email is required.")
@@ -11,7 +11,8 @@ const registrationValidation = [
 
   // Password needs to be min 6 chars
   body('password').isStrongPassword().withMessage("Password must be at least 8 characters long, " +
-        + "and a combination of upper and lowercase characters, numbers and symbols."),
+        + "and a combination of upper and lowercase characters, numbers and symbols.")
+        .isLength({max: 15}).withMessage("Password must not exceed 16 characters"),
 
   // Confirm Password needs to be min 6 chars AND must match the req.body.password field
   body('confirmPass').isStrongPassword().withMessage("Password must be at least 8 characters long, " +

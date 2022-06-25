@@ -22,6 +22,7 @@ const bodyParser = require('body-parser');
 
 // Using routes
 const routes = require('./routes/routes.js');
+const authRouter = require('./routes/auth');
 
 // Using db functions
 const db = require('./models/db.js');
@@ -52,7 +53,6 @@ app.use(express.static('public')); // static directory name, meaning that the ap
 app.use(express.static(__dirname + '/public'));//use to apply css
 app.use(express.static(__dirname + '/'));//use to apply css
 app.use(fileUpload()); // for fileuploading
-app.use('/', routes); // Use the routes folder to process requests
 
 // Sessions
 app.use(session({
@@ -72,6 +72,11 @@ app.use((req, res, next) => {
   res.locals.error_msg = req.flash('error_msg');
   next();
 });
+
+app.use(flash());
+
+app.use('/', routes); // Use the routes var to process webpages
+app.use('/', authRouter); // Use the routes var to process registration/login
 
 /** Setting server */
 

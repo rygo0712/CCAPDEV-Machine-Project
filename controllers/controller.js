@@ -9,7 +9,9 @@ var path = require('path');
 const controller = {
 
     getIndex: function(req, res) {
-        res.sendFile(path.resolve('./views/index.html'));
+        res.render('index', {
+            pageTitle: 'Login',
+          });
     },
     
 
