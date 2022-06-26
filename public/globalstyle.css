@@ -32,7 +32,7 @@ textarea {
 	color: black !important;
 }
 
-input[type="text"],input[type="search"], textarea {
+input[type="text"],input[type="search"],input[type="email"],input[type="password"], textarea {
 	padding: 12px;
 	color: gray;
 	border-radius: 10px;
@@ -88,13 +88,26 @@ img {
 	background-color: white;
 }
 
+.error{
+	color: red;
+}
 
+.success{
+	color: green;
+}
+
+.status_msg{
+	height: auto;
+	width: auto;
+	margin: 8px;
+	font-size: 16px;
+}
 
 .login_container {
 	
 	position: relative;
-	padding-top: 10vh;
-	height: 90vh;
+	padding-top: 8vh;
+	height: 92vh;
 }
 
 .login_container h2 {
@@ -107,7 +120,8 @@ img {
 	margin: auto;
 	padding: 50px;
 	padding-top: 30px;
-	height: 500px;
+	padding-bottom: 25px;
+	height: auto;
 	max-width: 450px;
 	margin-bottom: 0px;
 	background-color: white;

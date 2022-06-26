@@ -4,6 +4,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+const session = require('express-session');
+const flash = require('connect-flash');
+const MongoStore = require('connect-mongo');
+
 // For File Uploads
 const fileUpload = require('express-fileupload');
 
@@ -18,6 +22,7 @@ const bodyParser = require('body-parser');
 
 // Using routes
 const routes = require('./routes/routes.js');
+const authRouter = require('./routes/auth');
 
 // Using db functions
 const db = require('./models/db.js');
@@ -39,8 +44,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 dotenv.config();
 port = process.env.PORT;
 hostname = process.env.HOSTNAME;
-
-console.log(port + " " + hostname);
+mongoURI = process.env.DB_URL;
 
 // Initialize data and static folder that our app will use
 app.use(express.json()); // Use JSON throughout our app for parsing
@@ -49,7 +53,30 @@ app.use(express.static('public')); // static directory name, meaning that the ap
 app.use(express.static(__dirname + '/public'));//use to apply css
 app.use(express.static(__dirname + '/'));//use to apply css
 app.use(fileUpload()); // for fileuploading
-app.use('/', routes); // Use the routes folder to process requests
+
+// Sessions
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    store: MongoStore.create({ mongoUrl: mongoURI }),
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false, maxAge: 1000 * 60 * 60 * 24 * 14 }
+  }));
+
+// Flash
+app.use(flash());
+
+// Global messages vars
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  next();
+});
+
+app.use(flash());
+
+app.use('/', routes); // Use the routes var to process webpages
+app.use('/', authRouter); // Use the routes var to process registration/login
 
 /** Setting server */
 
