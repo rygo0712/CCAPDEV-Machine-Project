@@ -9,8 +9,9 @@ var path = require('path');
 const controller = {
 
     getIndex: function(req, res) {
-        res.render('index', {
+        res.render('login', {
             pageTitle: 'Login',
+            layout: 'index'
           });
     },
     

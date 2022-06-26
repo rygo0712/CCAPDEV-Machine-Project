@@ -6,8 +6,9 @@ const { isPublic, isPrivate } = require('../middlewares/checkAuth');
 
 // GET login to display login page
 router.get('/login', isPublic, (req, res) => {
-  res.render('index', {
+  res.render('login', {
     pageTitle: 'Login',
+    layout: 'index'
   });
 });
 
@@ -15,6 +16,7 @@ router.get('/login', isPublic, (req, res) => {
 router.get('/signup', isPublic, (req, res) => {
   res.render('signup', {
     pageTitle: 'Registration',
+    layout: 'index'
   });
 });
 
