@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Anime Discussion Forum</title>
+		<link rel="stylesheet" type="text/css" media="all" href="public/globalstyle.css">
+		<script src="scripts/slideshow.js"></script>	
+	</head>
+	
+	
+	<body id="slideshow" onload="slideShow()">
+		<div class="login_container">
+			<div class="login_content">
+				<img class="format_center" src="images/logo.png"></img>
+			<h2 class="login_text">Sign-up</h2>
+			<h4 class="login_text">	
+				<form action="/signup" method="POST" enctype="application/x-www-form-urlencoded">
+					Email: <br>
+					<input placeholder="Email" type="email" id="email" name="email"/>
+					<br>
+					<br>
+					Username: <br>
+					<input placeholder="Username" type="text" id="username" name="username"/>
+					<br>
+					<br>
+					Password: <br>
+					<input placeholder="Password" type="password" id="password" name="password"/>
+					<br>
+					<br>
+					Confirm Password: <br>
+					<input placeholder="Confirm Password" type="password" id="confirmPass" name="confirmPass"/>
+					<br>
+					<br>
+					<input type="submit" value="Sign-up"></input>
+					<br>
+					<br>
+				</form>
+			</h4>
+				{{> status_msg}}
+			</div>
+			
+		</div>
+	</body>
+</html>

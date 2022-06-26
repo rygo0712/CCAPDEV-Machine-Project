@@ -1,0 +1,61 @@
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" media="all" href="public/globalstyle.css">
+		<title>Edit Profile | AniMatrix</title>
+    </head>
+    <body>		
+		{{> header}}
+		<div class="main_content_profile">
+			<p>// <a href="/view-profile">Profile</a> > Edit Profile</p>
+				<div class="profile-container">
+					<div class="profile-left-container">
+						<div class="profile-image">
+							<h2 class="username-profile">okawaiikoto's Profile</h2>
+							<div class="profilepic-container-editprofile">
+							<label>
+								<input type="file" class="changeprofilepic-editprofile" accept="image/*">
+								<img class="profile-pic-editprofile" src="images/kaguya.jpg" />
+								<div class="overlay-editprofile">
+									<div class="overlaytext-editprofile">Change Picture</div>
+								</div>
+							</label>
+							</div>
+							
+						</div>
+                        
+                        <div class="quote-container">
+                            <h3 class="quote-header-profile">Edit Favorite Quote</h3>
+							<textarea class="editquote-box" wrap="soft" rows="5" cols="36" maxlength=150>"おかわいいこと．" - Shinomiya Kaguya</textarea>
+                        </div>  
+
+						<div class="bio-container">
+							<h3 class="bio-header-profile">Edit Bio</h3>
+							<textarea class="editbio-box" wrap="soft" rows="9" cols="36" maxlength=300>Hi! I like watching anime!! Let's be friends! :) </textarea>
+						</div>
+						
+						<a href="/viewprofile"><button class="savechangesbtn-editprofile">Save Changes</button></a>
+						<a href="/viewprofile"><button class="cancelbtn-editprofile savechangesbtn-editprofile">Cancel</button></a>
+					</div>
+					
+					<div class="profile-right-container">
+						<h3 class="favechar-header-profile">okawaiikoto's Favorite Character</h3>
+						<div class="favecharpic-container-editprofile">
+						<label>
+							<input type="file" class="changefavecharpic-editprofile" accept="image/*">
+							<img src="images/shirogane-kei.jpg" class="favechar-img-editprofile"/>
+							<div class="overlay-favechar-editprofile">
+								<div class="overlaytext-favechar-editprofile">Change Picture</div>
+							</div>
+						</label>
+						</div>
+						
+                            
+                        
+					</div>  
+			</div>
+         
+    </body>
+</html>
