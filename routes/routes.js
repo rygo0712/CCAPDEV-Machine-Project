@@ -4,16 +4,28 @@ const controller = require('../controllers/controller.js');
 
 const { isPrivate } = require('../middlewares/checkAuth'); //requires users to be logged in to access these pages
 
-router.get('/', isPrivate, (req, res) => {
-    res.render('home', { 
+const Comment = require('../models/Comment.js');
+const Post = require('../models/Post.js');
+const Profile = require('../models/Profile.js');
+const User = require('../models/User.js');
+
+router.get('/', isPrivate, async(req, res) => {
+  const posts = await Post.find({});
+  
+  // Load posts from MongoDB query
+  res.render('home', {
+      posts, 
       pageTitle: 'Home', 
       name: req.session.name,
       layout: 'main'} );
   });
 
 //duplicate route for home
-router.get('/home', isPrivate, (req, res) => {
-    res.render('home', { 
+router.get('/home', isPrivate, async(req, res) => {
+  const posts = await Post.find({});  
+  
+  res.render('home', { 
+      posts,
       pageTitle: 'Home', 
       name: req.session.name,
       layout: 'main' } );
