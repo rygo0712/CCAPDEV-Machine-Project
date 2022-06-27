@@ -36,12 +36,12 @@ const homeController = {
 
       getPosts: (req,res) => {
         db.findMany(Post, {}, '', function (posts){
-            console.log(posts);
+            //console.log(posts);
             posts = posts.map(posts => posts.toJSON()); //formats 'posts' to JSON to remove mongoose schema formatting to edit the date on the next step
             posts.forEach(element => { //uses the moments module to format the date
                 element.postingTime = moment(element.postingTime).fromNow();
             });
-            console.log(posts);
+            //console.log(posts);
             res.render('home', { 
                 posts,
                 pageTitle: 'Home', 

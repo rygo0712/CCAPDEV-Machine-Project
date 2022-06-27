@@ -4,6 +4,7 @@ const Comment = require('../models/Comment.js');
 const Profile = require('../models/Profile.js');
 const User = require('../models/User.js');
 
+const moment = require('moment');
 var path = require('path');
 
 const controller = {
@@ -58,11 +59,18 @@ const controller = {
     getViewPost: (req, res) => {
         // not sure how to search for the specific post and comments
         // should pass a post and comment[] to the render function
-        res.render('view_post', { 
-            pageTitle: 'View Post', 
-            name: req.session.name,
-            layout: 'main' 
-        });
+        db.findOne(Post, {_id: req.query._id}, '', function (post){
+            console.log(post);
+            post = post.toJSON();
+            post.postingTime = moment(post.postingTime).fromNow();
+            console.log(post);
+            res.render('view_post', { 
+                post,
+                pageTitle: 'View Post', 
+                name: req.session.name,
+                layout: 'main' 
+            });
+        })
     }
 
 }

@@ -1,11 +1,14 @@
-<div class="post-entry" onclick="location.href='/view-post';">
-		<div class="comment-likedate-container">
-			<img class="normal-like-button" src="../public/images/like.png" alt="like button">
-			<h2 class="normal-like-count"> {{ numLikes }} </h2>
-			<h5 class="thread-title"> {{ title }} <h5>
-			<p class="post-poster-time">posted by: {{ username }} | {{ postingTime }}<p>
-		</div>
-		<p class="text-post">
-			{{ numComments }} comment(s)
-		</p>
-</div>
+<form method="get" action='/view-post' enctype="multipart/form-data">
+	<input type="hidden" name="_id" value="{{_id}}"/>
+	<button type="submit" class="post-entry">
+			<div class="comment-likedate-container">
+				<img class="normal-like-button" src="../public/images/like.png" alt="like button">
+				<h2 class="normal-like-count"> {{ numLikes }} </h2>
+				<h5 class="thread-title"> {{ title }} <h5>
+				<p class="post-poster-time">posted by: {{ username }} | {{ postingTime }}<p>
+			</div>
+			<p class="text-post">
+				{{ numComments }} comment(s)
+			</p>
+	</button>
+</form>

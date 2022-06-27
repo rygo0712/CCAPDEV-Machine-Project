@@ -1,6 +1,6 @@
 <!-- A post{} and comment[] will be passed to this hbs -->
 <div class="main_content">
-		<p class>// <a href="/homepage">Home</a> > {{ post.title }}</p>
+		<p class>// <a href="/home">Home</a> > {{ post.title }}</p>
 		<p class="post-poster-time">posted by: {{ post.username }} | {{ post.postingTime }}<p>
 		
 	<div class="post-header">
@@ -9,7 +9,7 @@
 		
 		<h1 class="post-title">&nbsp&nbsp{{ post.title }}</h1>
 		
-		<img class="image-post" src="./{{ post.imageContent }}">
+		{{#if post.imageContent}}<img class="image-post" src="./{{ post.imageContent }}">{{/if}}
 	</div>
 	
 	<p class="text-post">
