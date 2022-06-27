@@ -1,23 +1,23 @@
+<!-- A post{} and comment[] will be passed to this hbs -->
 <div class="main_content">
-		<p class>// <a href="/homepage">Home</a> > Spy X Family Reaction Episode 1</p>
-		<p class="post-poster-time">posted by: username123 | 8 hours ago<p>
+		<p class>// <a href="/homepage">Home</a> > {{ post.title }}</p>
+		<p class="post-poster-time">posted by: {{ post.username }} | {{ post.postingTime }}<p>
 		
 	<div class="post-header">
 		<img class="normal-like-button" src="images/like.png">
-		<h2 class="normal-like-count">1246</h2>
+		<h2 class="normal-like-count">{{ post.numLikes }}</h2>
 		
-		<h1 class="post-title">&nbsp&nbspSpy X Family Thoughts Episode 1</h1>
+		<h1 class="post-title">&nbsp&nbsp{{ post.title }}</h1>
 		
-		<img class="image-post" src="images/View_Post.png">
+		<img class="image-post" src="./{{ post.imageContent }}">
 	</div>
 	
 	<p class="text-post">
-		<em>Anya best girl, Yor step on me </em><br>
-		thoughts on episode 1??
-
+		{{ post.textContent }}
 	</p>
 	
 </div>
+
 <div class="comments">
 	<h1>Comments</h1>
 	<textarea class="comment-box" wrap="soft" rows="14" cols="10" placeholder="Write here..."></textarea>

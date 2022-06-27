@@ -8,13 +8,62 @@ var path = require('path');
 
 const controller = {
 
-    getIndex: function(req, res) {
+    // Display login page after receiving request from auth.js
+    getLogin: (req, res) => {
         res.render('login', {
             pageTitle: 'Login',
             layout: 'index'
           });
     },
-    
+
+    // Display signup page after receiving request from auth.js
+    getSignup: (req, res) => {
+        res.render('signup', {
+            pageTitle: 'Registration',
+            layout: 'index'
+        });
+    },
+
+    // Display home page
+    getHome: async(req, res) => {
+        const posts = await Post.find({});
+        
+        // Load posts from MongoDB query
+        res.render('home', {
+            posts, 
+            pageTitle: 'Home', 
+            name: req.session.name,
+            layout: 'main'
+        });
+    },
+
+    // Display view profile page
+    getViewProfile: (req, res) => {
+        res.render('view_profile', { 
+            pageTitle: 'View Profile', 
+            name: req.session.name,
+            layout: 'main' 
+        });
+    },
+
+    // Display edit profile page
+    getEditProfile: (req, res) => {
+        res.render('edit_profile', { 
+            pageTitle: 'Edit Profile', 
+            name: req.session.name,
+            layout: 'main' 
+        });
+    },
+
+    getViewPost: (req, res) => {
+        // not sure how to search for the specific post and comments
+        // should pass a post and comment[] to the render function
+        res.render('view_post', { 
+            pageTitle: 'View Post', 
+            name: req.session.name,
+            layout: 'main' 
+        });
+    }
 
 }
 

@@ -18,6 +18,12 @@
 		Latest Post
 	</h1><br>
 	Click on thread to view post
+
+	{{#each posts}}
+		{{> post this}}
+	{{/each }}
+	
+	<!--
 	<div class="post-entry" onclick="location.href='view_post.html';">
 		<div class="comment-likedate-container">
 			<img class="normal-like-button" src="images/like.png">
@@ -87,4 +93,6 @@
 	<div class="view-more">
 		<h2>View More</h2>
 	</div>
+
+	-->
 </div>

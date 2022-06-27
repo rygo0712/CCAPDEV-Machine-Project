@@ -11,48 +11,16 @@ const User = require('../models/User.js');
 
 const path = require('path');
 
-router.get('/', isPrivate, async(req, res) => {
-  const posts = await Post.find({});
-  
-  // Load posts from MongoDB query
-  res.render('home', {
-      posts, 
-      pageTitle: 'Home', 
-      name: req.session.name,
-      layout: 'main'} );
-  });
+router.get('/', isPrivate, controller.getHome);
 
 //duplicate route for home
-router.get('/home', isPrivate, async(req, res) => {
-  const posts = await Post.find({});  
-  
-  res.render('home', { 
-      posts,
-      pageTitle: 'Home', 
-      name: req.session.name,
-      layout: 'main' } );
-  });
+router.get('/home', isPrivate, controller.getHome);
 
-router.get('/view-profile', isPrivate, (req, res) => {
-    res.render('view_profile', { 
-      pageTitle: 'View Profile', 
-      name: req.session.name,
-      layout: 'main' } );
-  });
+router.get('/view-profile', isPrivate, controller.getViewProfile);
 
-router.get('/edit-profile', isPrivate, (req, res) => {
-    res.render('edit_profile', { 
-      pageTitle: 'Edit Profile', 
-      name: req.session.name,
-      layout: 'main' } );
-  });
+router.get('/edit-profile', isPrivate, controller.getEditProfile);
 
-router.get('/view-post', isPrivate, (req, res) => {
-  res.render('view_post', { 
-    pageTitle: 'View Post', 
-    name: req.session.name,
-    layout: 'main' } );
-  });
+router.get('/view-post', isPrivate, controller.getViewPost);
 
 // Request received when user creates a post in the home page
 router.post('/submit-post', isPrivate, (req, res) => {
