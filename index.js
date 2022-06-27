@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 const session = require('express-session');
+const exphbs = require('express-handlebars');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo');
 
@@ -37,8 +38,15 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Setting hbs and registering partials for rendering
-app.set('view engine','hbs');
-hbs.registerPartials(__dirname + '/views/partials');
+app.engine('hbs', exphbs.engine({
+  extname: 'hbs',
+  defaultLayout: "main",
+  layoutsDir: path.join(__dirname, '/views/layouts'),
+  partialsDir: path.join(__dirname, '/views/partials')
+  
+}));
+
+app.set('view engine', 'hbs');
 
 // Setting dotenv and port
 dotenv.config();
