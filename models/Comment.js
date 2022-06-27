@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 
 const CommentSchema = new mongoose.Schema({ // Each entry matches the data types in the HTML form
-    textContent: String,
-    imageContent: String,
-    user: String,
+    textContent: { type: String, required: true },
+    imageContent: { type: String },
+    username: { type: String },
     postingTime: {type: Date, default: Date.now},
-    numLikes: Number,
-    postid: Number, // (reference the post the comment was made on)
-    parentComment: Number
-}) // JSON format, consisting of the name: type collection
+    numLikes: { type: Number, default: 0 },
+    // (reference the post the comment was made on)
+    postid: { type: Schema.Types.ObjectId, ref: 'Post'}, 
+    parentComment: { type: Schema.Types.ObjectId, ref: 'CommentSchema', default: null },
+}); // JSON format, consisting of the name: type collection
 //either
 // make separate collection for each post
     // track each user, each post is its own collection

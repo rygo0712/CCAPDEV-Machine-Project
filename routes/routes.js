@@ -9,6 +9,8 @@ const Post = require('../models/Post.js');
 const Profile = require('../models/Profile.js');
 const User = require('../models/User.js');
 
+const path = require('path');
+
 router.get('/', isPrivate, async(req, res) => {
   const posts = await Post.find({});
   
@@ -51,4 +53,18 @@ router.get('/view-post', isPrivate, (req, res) => {
     name: req.session.name,
     layout: 'main' } );
   });
+
+// Request received when user creates a post in the home page
+router.post('/submit-post', isPrivate, (req, res) => {
+  const {image} = req.files
+  image.mv(path.resolve(__dirname, './public/images', image.name), (error) => {
+      Post.create({
+          ...req.body,
+          image: '/images/' + image.name
+      },  (error, post) => {
+          res.redirect('/');
+      })
+  });
+});
+
 module.exports = router;

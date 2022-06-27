@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
     email: { type: String, required: true },
     username: { type: String, required: true },
-	password: { type: String, min: 8, required: true },
+	  password: { type: String, min: 8, required: true },
     date: { type: Date, default: Date.now }
-}); // JSON format, consisting of the name: type collection
+}); 
 
 const User = mongoose.model('User', UserSchema);
 

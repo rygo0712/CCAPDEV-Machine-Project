@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const ProfileSchema = new mongoose.Schema({
-    username: String,
-    faveQuote: String,
-    bio: String,
-    profileImg: String,
-    faveCharImg: String
-}); // JSON format, consisting of the name: type collection
+    username: { type: String, required: true },
+    faveQuote: { type: String },
+    bio: { type: String },
+    profileImg: { type: String },
+    faveCharImg: { type: String }, 
+}); 
 
 const Profile = mongoose.model('Profile', ProfileSchema);
 

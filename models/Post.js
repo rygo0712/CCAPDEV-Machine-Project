@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
 
 const PostSchema = new mongoose.Schema({ // Each entry matches the data types in the HTML form
-    title: String,
-    textContent: String,
-    imageContent: String,
-    user: String,
+    title: { type: String, required: true },
+    textContent: {type: String, required: true },
+    imageContent: { type: String },
+    username: { type: String },
     postingTime: {type: Date, default: Date.now},
-    numLikes: Number,
-    id: Number
-}) // JSON format, consisting of the name: type collection
+    numLikes: { type: Number, default: 0 },
+    // numComments obtained by counting number of comments in the DB that refer to the post
+    numComments: { type: Number, default: 0 }
+}); 
 
 const Post = mongoose.model('Post', PostSchema); // Create Post based on schema model
 

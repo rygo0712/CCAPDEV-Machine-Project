@@ -2,12 +2,15 @@
 	<h1>
 		Create Post
 	</h1>
-	<textarea class="title-box" wrap="soft" placeholder="Title..."></textarea>
-	<textarea class="content-box" wrap="soft" placeholder="Write content..."></textarea>
-	<div class="comment-buttons"> 
-		<input type="submit" value="Attach media" class="searchsubmit" /> 
-		<input type="submit" value="Publish Post" class="searchsubmit" />
-	</div>
+	<form action="/submit-post" method="post" enctype="multipart/form-data">
+		<textarea class="title-box" wrap="soft" placeholder="Title..." name="title" ></textarea>
+		<textarea class="content-box" wrap="soft" placeholder="Write content..." name="textContent"></textarea>
+		<div class="comment-buttons"> 
+			<input type="file" value="Attach media" class="post-upload-image" accept="image/*" name="imageContent"/> 
+			<input type="submit" value="Publish Post" class="submit-post" value="SUBMIT" />
+		</div>
+	</form>
+	
 </div>
 
 <div class="post-thread">
