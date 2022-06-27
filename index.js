@@ -21,6 +21,9 @@ const hbs = require('hbs');
 // Using body parser for form input
 const bodyParser = require('body-parser');
 
+//Using multer for uploading multipart/form-data
+const multer = require('multer');
+
 // Using routes
 const routes = require('./routes/routes.js');
 const authRouter = require('./routes/auth');

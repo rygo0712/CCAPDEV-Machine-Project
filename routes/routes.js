@@ -1,6 +1,7 @@
 const router = require('express').Router();
 // Use the controller to process requests
 const controller = require('../controllers/controller.js');
+const homeController = require('../controllers/homeController.js')
 
 const { isPrivate } = require('../middlewares/checkAuth'); //requires users to be logged in to access these pages
 
@@ -8,6 +9,7 @@ const Comment = require('../models/Comment.js');
 const Post = require('../models/Post.js');
 const Profile = require('../models/Profile.js');
 const User = require('../models/User.js');
+
 
 const path = require('path');
 
@@ -55,16 +57,6 @@ router.get('/view-post', isPrivate, (req, res) => {
   });
 
 // Request received when user creates a post in the home page
-router.post('/submit-post', isPrivate, (req, res) => {
-  const {image} = req.files
-  image.mv(path.resolve(__dirname, './public/images', image.name), (error) => {
-      Post.create({
-          ...req.body,
-          image: '/images/' + image.name
-      },  (error, post) => {
-          res.redirect('/');
-      })
-  });
-});
+router.post('/submit-post', isPrivate, homeController.submitPost);
 
 module.exports = router;
