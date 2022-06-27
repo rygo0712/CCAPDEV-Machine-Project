@@ -13,27 +13,10 @@ const User = require('../models/User.js');
 
 const path = require('path');
 
-router.get('/', isPrivate, async(req, res) => {
-  const posts = await Post.find({});
-  
-  // Load posts from MongoDB query
-  res.render('home', {
-      posts, 
-      pageTitle: 'Home', 
-      name: req.session.name,
-      layout: 'main'} );
-  });
+router.get('/', isPrivate, homeController.getPosts);
 
 //duplicate route for home
-router.get('/home', isPrivate, async(req, res) => {
-  const posts = await Post.find({});  
-  
-  res.render('home', { 
-      posts,
-      pageTitle: 'Home', 
-      name: req.session.name,
-      layout: 'main' } );
-  });
+router.get('/home', isPrivate, homeController.getPosts);
 
 router.get('/view-profile', isPrivate, (req, res) => {
     res.render('view_profile', { 

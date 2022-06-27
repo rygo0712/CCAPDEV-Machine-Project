@@ -1,8 +1,5 @@
 const db = require('../models/db.js');
 const Post = require('../models/Post.js');
-const Comment = require('../models/Comment.js');
-const Profile = require('../models/Profile.js');
-const User = require('../models/User.js');
 
 var path = require('path');
 
@@ -24,8 +21,17 @@ const homeController = {
         });
       },
 
-      
 
+      getPosts: (req,res) => {
+        db.findMany(Post, {}, '', function (posts){
+            console.log(posts)
+            res.render('home', { 
+                posts: posts.map(posts => posts.toJSON()),
+                pageTitle: 'Home', 
+                name: req.session.name,
+                layout: 'main' } );
+        });
+      }
     
 
 }
