@@ -3,21 +3,21 @@
 		<div class="profile-container">
 			<div class="profile-left-container">
 				<div class="profile-image">
-					<h2 class="username-profile">okawaiikoto's Profile</h2>
-					<img class="profile-pic-profile" src="images/kaguya.jpg" />
+					<h2 class="username-profile">{{ this.username }}'s Profile</h2>
+					<img class="profile-pic-profile" src="./{{ this.profileImg }}" />
 				</div>
 				
 				<div class="quote-container">
 					<h3 class="quote-header-profile">Favorite Quote</h3>
 					<p class="quote-text-profile" >
-						"おかわいいこと．" - Shinomiya Kaguya
+						{{ this.faveQuote }}
 					</p>
 				</div>  
 
 				<div class="bio-container">
 					<h3 class="bio-header-profile">Bio</h3>
 					<p class="bio-text-profile" >
-						Hi! I like watching anime!! Let's be friends! :) 
+						{{ this.bio }}
 					</p>
 				</div>
 				
@@ -32,8 +32,8 @@
 			</div>
 			
 			<div class="profile-right-container">
-				<h3 class="favechar-header-profile">okawaiikoto's Favorite Character</h3>
-				<img src="images/shirogane-kei.jpg" class="favechar-img-profile"/>
+				<h3 class="favechar-header-profile">{{ this.username }}'s Favorite Character</h3>
+				<img src="./{{ this.faveCharImg }}" class="favechar-img-profile"/>
 					
 				<a href="/edit-profile"><button class="editprofilebtn-viewprofile">Edit Profile</button></a>
 			</div>  
