@@ -8,6 +8,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const flash = require('connect-flash');
 const MongoStore = require('connect-mongo');
+const moment = require('moment');
 
 // For File Uploads
 const fileUpload = require('express-fileupload');
@@ -20,6 +21,9 @@ const hbs = require('hbs');
 
 // Using body parser for form input
 const bodyParser = require('body-parser');
+
+//Using multer for uploading multipart/form-data
+const multer = require('multer');
 
 // Using routes
 const routes = require('./routes/routes.js');

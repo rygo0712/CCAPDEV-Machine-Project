@@ -32,7 +32,7 @@ textarea {
 	color: black !important;
 }
 
-input[type="text"],input[type="search"],input[type="email"],input[type="password"], textarea {
+input[type="text"],input[type="search"],input[type="email"],input[type="password"],input[type="file"], textarea {
 	padding: 12px;
 	color: gray;
 	border-radius: 10px;
@@ -41,6 +41,31 @@ input[type="text"],input[type="search"],input[type="email"],input[type="password
 	font-size: 15px;
 	height: 15px;
 	width: 300px;
+}
+
+input[type="file"] {
+	background-color: white;
+	padding: 5px;
+	height: 100%;
+	width: 300px;
+	font-size: 12px;
+}
+
+input[type=file]::file-selector-button {
+	background-color: #ff7200;
+	color: white;
+	border: 0px;
+	padding: 8px;
+	transition: 0.2s;
+	text-decoration: none;
+	border-radius: 10px;
+	font-size: 15px;
+}
+
+input[type=file]::file-selector-button:hover {
+	background-color: gray;
+	transition: 0.2s;
+	cursor: pointer;
 }
 
 input[type="submit"] {
