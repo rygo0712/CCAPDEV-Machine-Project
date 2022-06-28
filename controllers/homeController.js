@@ -1,5 +1,6 @@
 const db = require('../models/db.js');
 const Post = require('../models/Post.js');
+const Profile = require('../models/Profile.js');
 
 const moment = require('moment');
 var path = require('path');
@@ -41,12 +42,16 @@ const homeController = {
             posts.forEach(element => { //uses the moments module to format the date
                 element.postingTime = moment(element.postingTime).fromNow();
             });
+            db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
+                res.render('home', { 
+                    posts,
+                    username: req.session.username,
+                    profileImg: header.profileImg,
+                    pageTitle: 'Home', 
+                    name: req.session.name,
+                    layout: 'main' } );
+            })
             //console.log(posts);
-            res.render('home', { 
-                posts,
-                pageTitle: 'Home', 
-                name: req.session.name,
-                layout: 'main' } );
         });
       }
     

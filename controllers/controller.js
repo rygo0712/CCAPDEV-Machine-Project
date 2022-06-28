@@ -40,20 +40,28 @@ const controller = {
 
     // Display view profile page
     getViewProfile: (req, res) => {
-        res.render('view_profile', { 
-            pageTitle: 'View Profile', 
-            name: req.session.name,
-            layout: 'main' 
-        });
+        db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
+            res.render('view_profile', { 
+                username: req.session.username,
+                profileImg: header.profileImg,
+                pageTitle: 'View Profile', 
+                name: req.session.name,
+                layout: 'main' 
+            });
+        })
     },
 
     // Display edit profile page
     getEditProfile: (req, res) => {
-        res.render('edit_profile', { 
-            pageTitle: 'Edit Profile', 
-            name: req.session.name,
-            layout: 'main' 
-        });
+        db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
+            res.render('edit_profile', { 
+                username: req.session.username,
+                profileImg: header.profileImg,
+                pageTitle: 'Edit Profile', 
+                name: req.session.name,
+                layout: 'main' 
+            });
+        })
     },
 
     getViewPost: (req, res) => {
@@ -64,12 +72,16 @@ const controller = {
             post = post.toJSON();
             post.postingTime = moment(post.postingTime).fromNow();
             console.log(post);
-            res.render('view_post', { 
-                post,
-                pageTitle: 'View Post', 
-                name: req.session.name,
-                layout: 'main' 
-            });
+            db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
+                res.render('view_post', { 
+                    post,
+                    username: req.session.username,
+                    profileImg: header.profileImg,
+                    pageTitle: 'View Post', 
+                    name: req.session.name,
+                    layout: 'main' 
+                });
+            })
         })
     }
 
