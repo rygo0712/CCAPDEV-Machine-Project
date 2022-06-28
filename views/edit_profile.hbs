@@ -7,7 +7,7 @@
 					<div class="profilepic-container-editprofile">
 					<label>
 						<input type="file" class="changeprofilepic-editprofile" accept="image/*">
-						<img class="profile-pic-editprofile" src="images/kaguya.jpg" />
+						<img class="profile-pic-editprofile" src='{{this.profileImg}}' />
 						<div class="overlay-editprofile">
 							<div class="overlaytext-editprofile">Change Picture</div>
 						</div>
@@ -17,12 +17,12 @@
 				
 			<div class="quote-container">
 				<h3 class="quote-header-profile">Edit Favorite Quote</h3>
-				<textarea class="editquote-box" wrap="soft" rows="5" cols="36" maxlength=150>"おかわいいこと．" - Shinomiya Kaguya</textarea>
+				<textarea class="editquote-box" wrap="soft" rows="5" cols="36" maxlength=150>{{this.faveQuote}}</textarea>
 			</div>  
 
 			<div class="bio-container">
 				<h3 class="bio-header-profile">Edit Bio</h3>
-				<textarea class="editbio-box" wrap="soft" rows="9" cols="36" maxlength=300>Hi! I like watching anime!! Let's be friends! :) </textarea>
+				<textarea class="editbio-box" wrap="soft" rows="9" cols="36" maxlength=300>{{this.bio}}</textarea>
 			</div>
 				
 			<a href="/viewprofile"><button class="savechangesbtn-editprofile">Save Changes</button></a>
@@ -34,7 +34,7 @@
 			<div class="favecharpic-container-editprofile">
 			<label>
 				<input type="file" class="changefavecharpic-editprofile" accept="image/*">
-				<img src="images/shirogane-kei.jpg" class="favechar-img-editprofile"/>
+				<img src='{{this.faveCharImg}}' class="favechar-img-editprofile"/>
 				<div class="overlay-favechar-editprofile">
 					<div class="overlaytext-favechar-editprofile">Change Picture</div>
 				</div>

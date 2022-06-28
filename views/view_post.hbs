@@ -20,11 +20,14 @@
 
 <div class="comments">
 	<h1>Comments</h1>
-	<textarea class="comment-box" wrap="soft" rows="14" cols="10" placeholder="Write here..."></textarea>
+	<form action="/comment-post" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="_id" value="{{_id}}"/>
+	<textarea class="comment-box" name="textContent" wrap="soft" rows="14" cols="10" placeholder="Write here..."></textarea>
 	<div class="comment-buttons"> 
-		<input type="submit" value="Attach media" class="searchsubmit" /> 
-		<input type="submit" value="Post comment" class="searchsubmit" />
+		<input type="file" accept="image/*" value="Attach media" name="imageContent" class="searchsubmit" /> 
+		<input type="submit" value="Post comment" class="searchsubmit"/>
 	</div>
+	</form>
 	
 	{{#each comments}}
 		{{> comment this}}

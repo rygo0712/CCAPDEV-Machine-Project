@@ -7,7 +7,7 @@ const CommentSchema = new mongoose.Schema({ // Each entry matches the data types
     postingTime: {type: Date, default: Date.now},
     numLikes: { type: Number, default: 0 },
     // (reference the post the comment was made on)
-    postid: { type: mongoose.Types.ObjectId, ref: 'Post'}, 
+    postid: { type: String}, 
     parentComment: { type: mongoose.Types.ObjectId, ref: 'CommentSchema', default: null },
 }); // JSON format, consisting of the name: type collection
 //either

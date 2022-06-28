@@ -29,4 +29,7 @@ router.get('/view-post', isPrivate, controller.getViewPost);
 // Request received when user creates a post in the home page
 router.post('/submit-post', isPrivate, homeController.submitPost);
 
+//Request revie
+router.post('/comment-post', isPrivate, homeController.submitComment);
+
 module.exports = router;

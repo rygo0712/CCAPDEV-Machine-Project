@@ -6,6 +6,7 @@ const User = require('../models/User.js');
 
 const moment = require('moment');
 var path = require('path');
+const { cp } = require('fs');
 
 const controller = {
 
@@ -40,10 +41,13 @@ const controller = {
 
     // Display view profile page
     getViewProfile: (req, res) => {
-        db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
+        db.findOne(Profile, { username: req.session.username }, '', (header) =>{ //profile pic query
             res.render('view_profile', { 
                 username: req.session.username,
                 profileImg: header.profileImg,
+                faveCharImg: header.faveCharImg,
+                bio: header.bio,
+                faveQuote: header.faveQuote,
                 pageTitle: 'View Profile', 
                 name: req.session.name,
                 layout: 'main' 
@@ -53,10 +57,13 @@ const controller = {
 
     // Display edit profile page
     getEditProfile: (req, res) => {
-        db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
+        db.findOne(Profile, { username: req.session.username }, '', (header) =>{ //profile pic query
             res.render('edit_profile', { 
                 username: req.session.username,
                 profileImg: header.profileImg,
+                faveCharImg: header.faveCharImg,
+                bio: header.bio,
+                faveQuote: header.faveQuote,
                 pageTitle: 'Edit Profile', 
                 name: req.session.name,
                 layout: 'main' 
@@ -71,20 +78,48 @@ const controller = {
             console.log(post);
             post = post.toJSON();
             post.postingTime = moment(post.postingTime).fromNow();
-            console.log(post);
-            db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
-                res.render('view_post', { 
-                    post,
-                    username: req.session.username,
-                    profileImg: header.profileImg,
-                    pageTitle: 'View Post', 
-                    name: req.session.name,
-                    layout: 'main' 
+            db.findMany(Comment, {postid: req.query._id}, '', function (comments){
+                comments = comments.map(comments => comments.toJSON());
+                comments.forEach(element => {
+                    element.postingTime = moment(element.postingTime).fromNow();
                 });
+                db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
+                    res.render('view_post', { 
+                        post,
+                        comments,
+                        username: req.session.username,
+                        profileImg: header.profileImg,
+                        pageTitle: 'View Post', 
+                        name: req.session.name,
+                        layout: 'main', 
+                        _id: req.query._id
+                    });
+                }) 
             })
+ 
         })
     }
 
 }
 
 module.exports = controller;
+/*
+db.findMany(Comment, {postid: post._id}, '', function (comments){
+    //console.log(comments)
+    comments = comments.map(comments => comments.toJSON());
+    comments.forEach(element => {
+        element.postTime = moment(element.postTime).fromNow();
+    })
+console.log(post);
+    db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
+        res.render('view_post', { 
+            post,
+            comments,
+            username: req.session.username,
+            profileImg: header.profileImg,
+            pageTitle: 'View Post', 
+            name: req.session.name,
+            layout: 'main' 
+        });
+    })
+}) */
