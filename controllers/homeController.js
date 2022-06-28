@@ -80,6 +80,7 @@ const homeController = {
         posts.forEach(element => { //uses the moments module to format the date
             element.postingTime = moment(element.postingTime).fromNow();
         });
+        posts = posts.reverse();
         db.findOne(Profile, { username: req.session.username }, '', (header) =>{ //profile pic query
             res.render('home', { 
                 posts,

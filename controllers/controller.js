@@ -79,10 +79,12 @@ const controller = {
             post = post.toJSON();
             post.postingTime = moment(post.postingTime).fromNow();
             db.findMany(Comment, {postid: req.query._id}, '', function (comments){
+                db.updateOne(Post, {_id: req.query._id}, { $set: {numComments: comments.length} }, (err, res) => {console.log(res)}) //updates number of comments
                 comments = comments.map(comments => comments.toJSON());
                 comments.forEach(element => {
                     element.postingTime = moment(element.postingTime).fromNow();
                 });
+                comments = comments.reverse();
                 db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
                     res.render('view_post', { 
                         post,
