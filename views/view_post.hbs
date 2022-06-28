@@ -26,8 +26,10 @@
 		<input type="submit" value="Post comment" class="searchsubmit" />
 	</div>
 	
-	
-	<div class="comment-thread">
+	{{#each comments}}
+		{{> comment this}}
+	{{/each}}
+	{{!--<div class="comment-thread">
 		<div class="comment-entry">
 			<div class="comment-likedate-container">
 				<img class="normal-like-button" src="images/like.png">
@@ -151,6 +153,6 @@
 				moments, with little  Anya's innocent love tying this strange trio together <3
 			</p>
 		</div>
-	</div>
+	</div>--}}
 </div>
 <div class="ending-margin"></div>
