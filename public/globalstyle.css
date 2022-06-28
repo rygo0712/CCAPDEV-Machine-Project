@@ -185,11 +185,16 @@ img {
 	margin: 10px;
 	font-size: 15px;
 	line-height: 25px;
+	float: left;
 }
 
 .normal-like-button {
 	float: left;
 	height: 26px;
+}
+
+.normal-like-button:hover{
+	filter: grayscale(100%);
 }
 
 .normal-like-button:hover {

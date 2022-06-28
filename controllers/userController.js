@@ -1,5 +1,6 @@
 const db = require('../models/db.js');
 const User = require('../models/User.js');
+const Profile = require('../models/Profile.js');
 
 const { validationResult } = require('express-validator');
 const bcrypt = require('bcrypt');
@@ -45,6 +46,11 @@ exports.registerUser = (req, res) => {
               res.redirect('/signup');
               // res.status(500).send({ message: "Could not create user"});
             } else {
+              Profile.create({ username: newUser.username }, (err, profile) => {
+                if (err) {
+                  console.log("error creating user profile for" + newUser.username);
+                }
+              })
               req.flash('success_msg', 'You are now registered! You may now login above.');
               res.redirect('/login');
             }
