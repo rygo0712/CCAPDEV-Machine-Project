@@ -58,6 +58,8 @@ Updated todo June 29
 8. upload to heroku (last thing to do)
 9. schedule 2pm July 6 earliest 
 10. view other peoples profile but cant edit it 
+11. same image name issue (do it after minimum specs is done)
+)
 optional
 threaded commment  
 
