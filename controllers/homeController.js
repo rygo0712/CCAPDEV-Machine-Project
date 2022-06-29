@@ -3,19 +3,35 @@ const Post = require('../models/Post.js');
 const Profile = require('../models/Profile.js');
 const Comment = require('../models/Comment.js');
 const moment = require('moment');
-var path = require('path');
+const path = require('path');
+const fs = require('fs');
+
+const { 
+    v1: uuidv1,
+    v4: uuidv4,
+  } = require('uuid');
 
 const homeController = {
     //to submit a post
     submitPost: (req, res) => {
-        if(req.files != null){const image = req.files.imageContent
-            console.log(req.files.imageContent)
-            console.log(path.resolve('./public/images', image.name));
-            image.mv(path.resolve('./public/images', image.name), (error) => {
+        if(req.files != null){
+            const image = req.files.imageContent
+            //console.log(image);
+            let newname = uuidv1() + path.extname(image.name);
+            fs.stat('./public/images/' + newname, function(err, data){
+                if(err){
+                    image.name = newname;
+                }
+            });
+                
+                
+            //console.log(req.files.imageContent)
+            //console.log(path.resolve('./public/images', newname));
+            image.mv(path.resolve('./public/images', newname), (error) => {
                 Post.create({
                     title: req.body.title,
                     textContent: req.body.textContent,
-                    imageContent: '/images/' + image.name,
+                    imageContent: '/images/' + newname,
                     username: req.session.username
                 },  (error, post) => {
                     res.redirect('/');
@@ -37,29 +53,37 @@ const homeController = {
     //submit a comment for the post
     
     submitComment: (req, res) => {
-        if (req.files != null){const image = req.files.imageContent
-        console.log(req.files.imageContent)
-        console.log(path.resolve('./public/images', image.name));
-        image.mv(path.resolve('./public/images', image.name), (error) => {
-            Comment.create({
-                textContent: req.body.textContent,
-                imageContent: '/images/' + image.name,
-                username: req.session.username,
-                postid: req.body._id
-            }, (error, comment) => {
-                res.redirect('/view-post?_id=' + req.body._id)
-                /*res.render('view_post', { 
-                    post,
-                    comments,
+        if (req.files != null){
+            const image = req.files.imageContent
+            //console.log(req.files.imageContent)
+            //console.log(path.resolve('./public/images', image.name));
+            let newname = uuidv1() + path.extname(image.name);
+            fs.stat('./public/images/' + newname, function(err, data){
+                if(err){
+                    image.name = newname;
+                }
+            });
+            image.mv(path.resolve('./public/images', newname), (error) => {
+                Comment.create({
+                    textContent: req.body.textContent,
+                    imageContent: '/images/' + newname,
                     username: req.session.username,
-                    profileImg: header.profileImg,
-                    pageTitle: 'View Post', 
-                    name: req.session.name,
-                    layout: 'main' 
-                });*/
-            })
+                    postid: req.body._id
+                }, (error, comment) => {
+                    res.redirect('/view-post?_id=' + req.body._id)
+                    /*res.render('view_post', { 
+                        post,
+                        comments,
+                        username: req.session.username,
+                        profileImg: header.profileImg,
+                        pageTitle: 'View Post', 
+                        name: req.session.name,
+                        layout: 'main' 
+                    });*/
+                })
 
-        });}
+            });
+        }
         else{
             Comment.create({
                 textContent: req.body.textContent,
