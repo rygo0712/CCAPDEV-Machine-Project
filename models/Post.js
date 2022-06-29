@@ -6,7 +6,7 @@ const PostSchema = new mongoose.Schema({ // Each entry matches the data types in
     imageContent: { type: String },
     username: { type: String },
     postingTime: {type: Date, default: Date.now},
-    likesBy: { type: [String], default: [] },
+    likesBy:  [{type : String}],
     // numComments obtained by counting number of comments in the DB that refer to the post
     numComments: { type: Number, default: 0 }
 }); 

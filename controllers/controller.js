@@ -106,8 +106,8 @@ const controller = {
 
     likePost: (req, res) => {
         console.log(req.query._id);
-        db.updateOne(Post, {_id: req.query._id}, { $push: {"likesBy": req.session.username} },  (err, res) => {
-            console.log(res);
+        db.updateOne(Post, {_id: req.query._id}, { $push: {likesBy: req.session.username} }, (err, res) => {
+            console.log(err);
         });
     }
 
