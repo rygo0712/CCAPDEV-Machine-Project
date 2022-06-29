@@ -9,12 +9,12 @@
 		<div class = "shortcut">
 			<nav class="shortcutlink">
 				<a href="/home">Home</a>
-				<a href="/view-profile">Profile</a>
+				<a href="/view-profile?username={{ username }}" >Profile</a>
 				<a href="/logout">Logout</a>
 			</nav>
 		</div>
 		<div class = "profile">
-			<img src='{{ profileImg }}' class="profilepic-display"></img>
+			<img src='{{ headerProfileImg }}' class="profilepic-display"></img>
 			<h5 class="username-display"> {{ username }} </h5>
 		</div>
 </div>

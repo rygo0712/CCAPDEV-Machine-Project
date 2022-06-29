@@ -34,6 +34,7 @@ const homeController = {
                     imageContent: '/images/' + newname,
                     username: req.session.username
                 },  (error, post) => {
+                    console.log("on post creation: " + post._id);
                     res.redirect('/');
                 })
         });} 
@@ -43,6 +44,7 @@ const homeController = {
                 textContent: req.body.textContent,
                 username: req.session.username,
             },  (error, post) => {
+                console.log("on post creation: " + post._id);
                 res.redirect('/');
             })
         }
@@ -72,8 +74,8 @@ const homeController = {
                     postid: req.body._id
                 }, (error, comment) => {
                     //console.log("on submitting comment req.body._id: " + req.body._id);
-                    var passingId = req.body._id.split(",");
-                    res.redirect('/view-post?_id=' + passingId[0]);
+                    //var passingId = req.body._id.split(",");
+                    res.redirect('/view-post?_id=' + req.body._id);
                     /*res.render('view_post', { 
                         post,
                         comments,
@@ -101,23 +103,23 @@ const homeController = {
 
 //Antonlouis.123
     getPosts: (req,res) => {
-    db.findMany(Post, {}, '', function (posts){
-        //console.log(posts);
-        posts = posts.map(posts => posts.toJSON()); //formats 'posts' to JSON to remove mongoose schema formatting to edit the date on the next step
-        posts.forEach(element => { //uses the moments module to format the date
-            element.postingTime = moment(element.postingTime).fromNow();
-        });
-        posts = posts.reverse();
-        db.findOne(Profile, { username: req.session.username }, '', (header) =>{ //profile pic query
-            res.render('home', { 
-                posts,
-                username: req.session.username,
-                profileImg: header.profileImg,
-                pageTitle: 'Home', 
-                name: req.session.name,
-                layout: 'main' } );
-        })
-        //console.log(posts);
+        db.findMany(Post, {}, '', function (posts){
+            //console.log(posts);
+            posts = posts.map(posts => posts.toJSON()); //formats 'posts' to JSON to remove mongoose schema formatting to edit the date on the next step
+            posts.forEach(element => { //uses the moments module to format the date
+                element.postingTime = moment(element.postingTime).fromNow();
+            });
+            posts = posts.reverse();
+            db.findOne(Profile, { username: req.session.username }, '', (header) =>{ //profile pic query
+                res.render('home', { 
+                    posts,
+                    username: req.session.username,
+                    headerProfileImg: header.profileImg,
+                    pageTitle: 'Home', 
+                    name: req.session.name,
+                    layout: 'main' } );
+            })
+            //console.log(posts);
     });
     }
     

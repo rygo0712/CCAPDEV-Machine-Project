@@ -6,20 +6,19 @@ $(document).ready(function () {
     // Increase or decrease like count (toggle) upon clicking like
     $(".normal-like-button").on('click', function(){
         let _id = $(this).siblings('[name="_id"]').val(); //returns double the id string separated by ','
-        _id = _id.split(",") //obtains array of thee identical id strings
 
         // If the post/comment has not yet been liked
         if ($(this).siblings('[name="_id"]').attr('class') == 'post-like') {
             
-            console.log('jqueryid: ' + _id[0]);
-            $.get('/like-post', { _id: _id[0] }, function(flag){
-                //console.log(flag);
+            console.log('jqueryid: ' + _id);
+            $.get('/like-post', { _id: _id }, function(newLikeCount){
+                $('.normal-like-count').text(newLikeCount.likes);
             })
         }
         else if ($(this).siblings('[name="_id"]').attr('class') == 'comment-like') {
-            console.log('jqueryid: ' + _id[0]);
-            $.get('/like-comment', { _id: _id[0] }, function(flag) {
-                console.log(flag);
+            console.log('jqueryid: ' + _id);
+            $.get('/like-comment', { _id: _id }, function(newLikeCount) {
+                $('.normal-like-count').text(newLikeCount.likes);
             });
         }
         

@@ -3,7 +3,7 @@
 		<div class="profile-container">
 			<div class="profile-left-container">
 				<div class="profile-image">
-					<h2 class="username-profile">{{ this.username }}'s Profile</h2>
+					<h2 class="username-profile">{{ this.profileUsername }}'s Profile</h2>
 					<img class="profile-pic-profile" src="./{{ this.profileImg }}" />
 				</div>
 				
@@ -32,9 +32,11 @@
 			</div>
 			
 			<div class="profile-right-container">
-				<h3 class="favechar-header-profile">{{ this.username }}'s Favorite Character</h3>
+				<h3 class="favechar-header-profile">{{ this.profileUsername }}'s Favorite Character</h3>
 				<img src="./{{ this.faveCharImg }}" class="favechar-img-profile"/>
 					
+				{{#if this.isOwnProfile}}
 				<a href="/edit-profile"><button class="editprofilebtn-viewprofile">Edit Profile</button></a>
+				{{/if}}
 			</div>  
 </div>

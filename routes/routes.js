@@ -28,6 +28,8 @@ router.get('/view-post', isPrivate, controller.getViewPost);
 
 router.get('/like-post', isPrivate, controller.likePost);
 
+router.get('/like-comment', isPrivate, controller.likeComment);
+
 // Request received when user creates a post in the home page
 router.post('/submit-post', isPrivate, homeController.submitPost);
 
