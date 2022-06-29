@@ -4,7 +4,16 @@ $(document).ready(function () {
     $(".post-entry").on('click') 
 
     // Increase or decrease like count (toggle) upon clicking like
-    $(".normal-like-button").on('click', )
+    $(".normal-like-button").on('click', function(){
+        let _id = $(this).siblings('[name="_id"]').val();
+        if ($(this).siblings('[name="_id"]').attr('class') == 'post-like'){
+            //console.log(_id);
+            $.get('/like-post', { _id: _id }, function(flag){
+                //console.log(flag);
+            })
+        }
+        
+    })
 
     // Create a post
 

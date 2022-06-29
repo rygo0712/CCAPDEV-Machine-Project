@@ -75,11 +75,13 @@ const controller = {
         // not sure how to search for the specific post and comments
         // should pass a post and comment[] to the render function
         db.findOne(Post, {_id: req.query._id}, '', function (post){
-            console.log(post);
+            //console.log(post);
             post = post.toJSON();
             post.postingTime = moment(post.postingTime).fromNow();
             db.findMany(Comment, {postid: req.query._id}, '', function (comments){
-                db.updateOne(Post, {_id: req.query._id}, { $set: {numComments: comments.length} }, (err, res) => {console.log(res)}) //updates number of comments
+                db.updateOne(Post, {_id: req.query._id}, { $set: {numComments: comments.length} }, (err, res) => {
+                    //console.log(res)
+                }) //updates number of comments
                 comments = comments.map(comments => comments.toJSON());
                 comments.forEach(element => {
                     element.postingTime = moment(element.postingTime).fromNow();
@@ -100,6 +102,13 @@ const controller = {
             })
  
         })
+    },
+
+    likePost: (req, res) => {
+        console.log(req.query._id);
+        db.updateOne(Post, {_id: req.query._id}, { $push: {"likesBy": req.session.username} },  (err, res) => {
+            console.log(res);
+        });
     }
 
 }

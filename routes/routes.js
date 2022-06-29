@@ -26,6 +26,8 @@ router.get('/edit-profile', isPrivate, controller.getEditProfile);
 
 router.get('/view-post', isPrivate, controller.getViewPost);
 
+router.get('/like-post', isPrivate, controller.likePost);
+
 // Request received when user creates a post in the home page
 router.post('/submit-post', isPrivate, homeController.submitPost);
 
