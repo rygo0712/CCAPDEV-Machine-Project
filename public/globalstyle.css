@@ -418,7 +418,10 @@ img {
 .profile 
 {
 	padding-right: 5px;
-	width: 150px;
+	width: 200px;
+	font-size: 100%;
+	text-align: center;
+	
 }
 
 .profilepic-display

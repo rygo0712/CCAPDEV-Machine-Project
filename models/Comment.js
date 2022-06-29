@@ -5,7 +5,8 @@ const CommentSchema = new mongoose.Schema({ // Each entry matches the data types
     imageContent: { type: String },
     username: { type: String },
     postingTime: {type: Date, default: Date.now},
-    likesBy: { type: [String], default: [] },
+    likesBy: [{type : String}],
+    numComments: { type: Number, default: 0},   
     // (reference the post the comment was made on)
     postid: { type: String}, 
     parentComment: { type: mongoose.Types.ObjectId, ref: 'CommentSchema', default: null },

@@ -7,6 +7,7 @@ const User = require('../models/User.js');
 const moment = require('moment');
 var path = require('path');
 const { cp } = require('fs');
+const { devNull } = require('os');
 
 const controller = {
 
@@ -72,10 +73,11 @@ const controller = {
     },
 
     getViewPost: (req, res) => {
-        // not sure how to search for the specific post and comments
-        // should pass a post and comment[] to the render function
+       
+        //console.log("req.query._id: " + req.query._id);
         db.findOne(Post, {_id: req.query._id}, '', function (post){
-            //console.log(post);
+            //console.log("req.query._id again: " + req.query._id);
+            console.log("Printing the post: " + post);
             post = post.toJSON();
             post.postingTime = moment(post.postingTime).fromNow();
             db.findMany(Comment, {postid: req.query._id}, '', function (comments){
@@ -104,14 +106,59 @@ const controller = {
         })
     },
 
+
     likePost: (req, res) => {
         console.log('id: ' + req.query._id);
+        var isLiked = false;
+
         db.findOne(Post, {_id: req.query._id}, '', function(post) {
             console.log('return ' + post);
+            
+            // Check if post has been liked by current user
+            isLiked = post.likesBy.includes(req.session.username);
+
+            if (isLiked) // Has already been liked, so will remove the like
+            {
+                db.updateOne(Post, {_id: req.query._id}, { $pull: {likesBy: req.session.username} }, (err, res) => {
+                    console.log(err);
+                });
+            }
+            else // Not yet liked, will add the like
+            {
+                db.updateOne(Post, {_id: req.query._id}, { $push: {likesBy: req.session.username} }, (err, res) => {
+                    console.log(err);
+                });
+            }
         });
-        db.updateOne(Post, {_id: req.query._id}, { $push: {likesBy: req.session.username} }, (err, res) => {
-            console.log(err);
+        
+        
+    },
+
+    likeComment: (req, res) => {
+        console.log('id: ' + req.query._id);
+        var isLiked = false;
+        
+        db.findOne(Comment, {_id: req.query._id}, '', function(comment) {
+            console.log('return ' + comment);
+
+            // Check if comment has already been liked by current user
+            isLiked = comment.likesBy.includes(req.session.username);
+
+            if (isLiked)
+            {
+                db.updateOne(Comment, {_id: req.query._id}, { $pull: {likesBy: req.session.username} }, (err, res) => {
+                    console.log(err);
+                });
+            }
+            else
+            {
+                db.updateOne(Comment, {_id: req.query._id}, { $push: {likesBy: req.session.username} }, (err, res) => {
+                    console.log(err);
+                });
+            }
         });
+        
+        
     }
 
 }

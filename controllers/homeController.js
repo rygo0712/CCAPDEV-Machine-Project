@@ -53,6 +53,7 @@ const homeController = {
     //submit a comment for the post
     
     submitComment: (req, res) => {
+        console.log("submitComment req.body._id: " + req.body._id);
         if (req.files != null){
             const image = req.files.imageContent
             //console.log(req.files.imageContent)
@@ -70,7 +71,9 @@ const homeController = {
                     username: req.session.username,
                     postid: req.body._id
                 }, (error, comment) => {
-                    res.redirect('/view-post?_id=' + req.body._id)
+                    //console.log("on submitting comment req.body._id: " + req.body._id);
+                    var passingId = req.body._id.split(",");
+                    res.redirect('/view-post?_id=' + passingId[0]);
                     /*res.render('view_post', { 
                         post,
                         comments,
