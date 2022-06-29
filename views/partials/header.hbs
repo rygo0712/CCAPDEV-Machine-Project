@@ -13,8 +13,9 @@
 				<a href="/logout">Logout</a>
 			</nav>
 		</div>
-		<div class = "profile">
+		<div class = "profile" onclick="location.href='/view-profile?username={{ username }}'">
 			<img src='{{ headerProfileImg }}' class="profilepic-display"></img>
-			<h5 class="username-display"> {{ username }} </h5>
+			<div class="username-div"><h5 class="username-display">{{ username }}</h5></div>
+			
 		</div>
 </div>

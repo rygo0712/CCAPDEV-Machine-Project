@@ -5,25 +5,24 @@ $(document).ready(function () {
 
     // Increase or decrease like count (toggle) upon clicking like
     $(".normal-like-button").on('click', function(){
-        let _id = $(this).siblings('[name="_id"]').val(); //returns double the id string separated by ','
+        let obj = $(this);
+        let _id = obj.siblings('[name="_id"]').val(); //returns double the id string separated by ','
+        
 
         // If the post/comment has not yet been liked
-        if ($(this).siblings('[name="_id"]').attr('class') == 'post-like') {
+        if (obj.siblings('[name="_id"]').attr('class') == 'post-like') {
             
             console.log('jqueryid: ' + _id);
             $.get('/like-post', { _id: _id }, function(newLikeCount){
-                $('.normal-like-count').text(newLikeCount.likes);
+                obj.siblings('.normal-like-count').text(newLikeCount.likes);
             })
         }
-        else if ($(this).siblings('[name="_id"]').attr('class') == 'comment-like') {
+        else if (obj.siblings('[name="_id"]').attr('class') == 'comment-like') {
             console.log('jqueryid: ' + _id);
             $.get('/like-comment', { _id: _id }, function(newLikeCount) {
-                $('.normal-like-count').text(newLikeCount.likes);
+                obj.siblings('.normal-like-count').text(newLikeCount.likes);
             });
         }
-        
-
-        
     });
 
     // Create a post

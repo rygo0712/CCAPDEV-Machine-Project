@@ -68,7 +68,7 @@ input[type=file]::file-selector-button:hover {
 	cursor: pointer;
 }
 
-input[type="submit"] {
+input[type="submit"], button {
 	transition: 0.3s;
 	padding: 12px;
 	color: white;
@@ -208,8 +208,13 @@ img {
 	margin-left: 10px;
 }
 
+.profile:hover{
+	cursor: pointer;
+}
 
-
+.comment-likedate-container, .text-post{
+	color: black;
+}
 
 /* for title, like and count of main post */
 .post-header {
@@ -382,7 +387,7 @@ img {
 	padding: 3%;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	border: 1px solid #ff7200;
+	border-bottom: 5px solid #ffae86;
 	border-radius: 10px;
 	color: #ff7200;
 }
@@ -390,6 +395,7 @@ img {
 .shortcutlink a:hover
 {
 	color: gray;
+	border-color: gray;
 }
 
 .profile
@@ -428,12 +434,19 @@ img {
 {
 	margin-right: 0px;
 	height: 60px;
+	float: left;
+}
+
+.username-div
+{
+	width: auto;
+	height: auto;
 }
 
 .username-display
 {
-	float: right;
 	padding-top: 24px;
+	color: #6e2500;
 }
 /* End of Home page CSS */
 
