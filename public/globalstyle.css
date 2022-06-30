@@ -188,7 +188,7 @@ img {
 	float: left;
 }
 
-.normal-like-button {
+.normal-like-button, .post-like-button {
 	float: left;
 	height: 26px;
 }
