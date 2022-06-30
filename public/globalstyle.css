@@ -16,6 +16,11 @@ a:hover {
 	color: #ff7200;
 }
 
+p {
+	word-break: break-all;
+	white-space: normal;
+}
+
 button:hover
 {
 	cursor: pointer;
