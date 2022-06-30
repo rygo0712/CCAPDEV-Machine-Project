@@ -32,14 +32,14 @@ router.get('/like-post', isPrivate, controller.likePost);
 
 router.get('/like-comment', isPrivate, controller.likeComment);
 
-// Request received when user creates a post in the home page
 router.post('/submit-post', isPrivate, homeController.submitPost);
 
-//Request revie
 router.post('/comment-post', isPrivate, homeController.submitComment);
 
 router.post('/save-editprofile', isPrivate, homeController.editProfile); 
 
 router.post('/save-editpost', isPrivate, homeController.editPost);
+
+router.get('/delete-post', isPrivate, homeController.deletePost);
 
 module.exports = router;

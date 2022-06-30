@@ -42,7 +42,7 @@ const homeController = {
                         imageContent: '/images/' + newname,
                         username: req.session.username
                     },  (error, post) => {
-                        console.log("on post creation: " + post._id);
+                        //console.log("on post creation: " + post._id);
                         res.redirect('/');
                     })
                 });
@@ -53,7 +53,7 @@ const homeController = {
                     textContent: req.body.textContent,
                     username: req.session.username,
                 },  (error, post) => {
-                    console.log("on post creation: " + post._id);
+                    //console.log("on post creation: " + post._id);
                     res.redirect('/');
                 })
             }
@@ -64,7 +64,7 @@ const homeController = {
     //submit a comment for the post
     
     submitComment: (req, res) => {
-        console.log("submitComment req.body._id: " + req.body._id);
+        //console.log("submitComment req.body._id: " + req.body._id);
         if (req.files != null){
             const image = req.files.imageContent
             //console.log(req.files.imageContent)
@@ -135,8 +135,6 @@ const homeController = {
     editProfile: (req, res) => {
         //console.log('profimg' + req.files.profileImg )
         //console.log('charimg' + req.files.faveCharImg )
-        //const profImg = req.files.profileImg
-        //const CharImg = req.files.faveCharImg
         try {
             console.log(req.files.profileImg)
             const profImg = req.files.profileImg
@@ -165,69 +163,11 @@ const homeController = {
         catch (e){
             console.log('error 1 is' + e)
         }
-        
-        // console.log(profImg)
-        // console.log(CharImg)
-
 
         db.updateOne(Profile, {username: req.session.username }, {$set: {faveQuote: req.body.faveQuote, bio: req.body.bio}}, (err, res) => {
             console.log(res)
         }); 
-        /*if (req.files.profileImg != null && !(req.files.faveCharImg))
-        {
-            console.log('condition1')
-            const profImg = req.files.profileImg
-            let newname = uuidv1() + path.extname(profImg.name)
-            
-            db.updateOne(Profile, {username: req.session.username }, {$set: {faveQuote: req.body.faveQuote, bio: req.body.bio, profileImg: '/images/' + newname}}, (err, res) => {
-                console.log(res)
-            }); 
-
-        }
-        else if (req.filefaveCharImg != null && !(req.files.profileImg))
-        {
-            console.log('condition2')
-            const charImg = req.files.faveCharImg
-            let newname = uuidv1() + path.extname(charImg.name)
-            db.updateOne(Profile, {username: req.session.username }, {$set: {faveQuote: req.body.faveQuote, bio: req.body.bio, charImg: '/images/' + newname}}, (err, res) => {
-                console.log(res)
-            }); 
-        }
-        else if (req.files == null)
-        {
-            console.log('condition3')
-            db.updateOne(Profile, {username: req.session.username }, {$set: {faveQuote: req.body.faveQuote, bio: req.body.bio}}, (err, res) => {
-                console.log(res)
-            }); 
-        }
-        else if (req.files.profileImg != null && req.filefaveCharImg != null)
-        {
-            console.log('condition4')
-            const profImg = req.files.profileImg
-            const CharImg = req.files.charImg
-
-            let newname = uuidv4() + path.extname(profImg.name)
-            let newname2 = uuidv4() + path.extname(charImg.name)
-            db.updateOne(Profile, {username: req.session.username }, {$set: {faveQuote: req.body.faveQuote, bio: req.body.bio, profileImg: '/images/' + newname, charImg: '/images/' + newname2}}, (err, res) => {
-                console.log(res)
-            }); 
-        }*/
-        // db.findOne(Profile, { username: req.session.username }, '', (profile) =>{
-           
-        //     /*res.render('view_profile', { 
-        //         username: req.session.username,
-        //         profileUsername: req.session.username,
-        //         headerProfileImg: profile.profileImg,
-        //         profileImg: profile.profileImg,
-        //         faveCharImg: profile.faveCharImg,
-        //         bio: profile.bio,
-        //         faveQuote: profile.faveQuote,
-        //         pageTitle: 'View Profile', 
-        //         name: req.session.name,
-        //         layout: 'main',
-        //         isOwnProfile: true
-        //     });*/
-        // })
+       
         res.redirect('/view-profile?username=' + req.session.username)
     },
 
@@ -253,6 +193,15 @@ const homeController = {
         }); 
 
         res.redirect('/view-post?_id=' + req.body._id);
+    },
+
+    deletePost: (req, res) => {
+        
+        console.log("homeController deletePost req.query._id: " + req.query._id);
+        db.deleteOne(Post, {_id: req.query._id}, (result) => {
+            // it wont redirect home idk why
+            res.redirect('/home');
+        });
     }
 }
 

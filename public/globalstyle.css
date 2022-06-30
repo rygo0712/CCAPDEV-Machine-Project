@@ -534,15 +534,21 @@ img {
 	border-radius: 5px;
 }
 
-.editpostbtn-viewpost
+.viewpost-btns, .deletepostbtn-viewpost, .editpostbtn-viewpost
 {
 	float: right;
-	margin-right: 10px;
+	margin-left: 5px;
 	text-decoration: underline;
 	color: orange !important;
+	
 }
-
-.editpostbtn-viewpost:hover
+/*
+.editpostbtn-viewpost
+{
+	margin-right: 5px;
+}
+*/
+.editpostbtn-viewpost:hover, .deletepostbtn-viewpost:hover
 {
 	cursor: pointer;
 	color: gray !important;

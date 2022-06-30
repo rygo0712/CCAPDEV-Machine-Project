@@ -46,6 +46,7 @@ $(document).ready(function () {
         }
     }
     
+    // Will show preview of uploaded images on upload
     $(".changeprofilepic-editprofile").change(function(){
         readURLprofpic(this);
     });
@@ -60,7 +61,7 @@ $(document).ready(function () {
         {
             $(".editpost-container").html(`<form action="/save-editpost" method="post" enctype="multipart/form-data">
             <input type="hidden" class="editpost-id" name="_id" value="` + $(".post-like").val() + `"/>
-            <textarea class="content-box" wrap="soft" name="textContent">` + $('.text-post').text().trim() + `</textarea>
+            <textarea class="content-box" wrap="soft" name="textContent">` + $('.main-content .text-post').text().trim() + `</textarea>
             <input type="file" value="Attach media" class="post-upload-image" accept="image/*" name="imageContent"/>
             <input type="submit" value="Save Changes" class="submit-post" value="SUBMIT" />
             </form>`);
@@ -72,6 +73,26 @@ $(document).ready(function () {
         
         
     }); 
+
+    // Deleting post
+    $(".deletepostbtn-viewpost").on('click', function() {
+        var postId = $('.post-like').val();
+
+        if (confirm("Are you sure you want to delete your post?"))
+        {
+            //console.log("postId: " + postId);
+            $.get('/delete-post', { _id: postId }, (result) => {
+                //console.log("delete post result: " + result);
+                
+            });
+            // it wont redirect back to home ??
+            $.get('/home');
+        }
+        else
+        {
+            console.log("post was not deleted");
+        }
+    });
 
 
     // Create a post

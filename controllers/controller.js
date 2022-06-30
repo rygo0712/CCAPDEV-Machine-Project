@@ -8,7 +8,9 @@ const moment = require('moment');
 var path = require('path');
 const { cp } = require('fs');
 const { devNull } = require('os');
-const { post } = require('../routes/routes.js');
+// this was causing the warning for circular dependency
+// controller requires routes but routes also requires controller
+//const { post } = require('../routes/routes.js');
 
 const controller = {
 
@@ -107,7 +109,7 @@ const controller = {
 
     getViewPost: (req, res) => {
        
-        console.log("getViewPost req.query._id: " + req.query._id);
+        //console.log("getViewPost req.query._id: " + req.query._id);
         db.findOne(Post, {_id: req.query._id}, '', function (post){
             //console.log("req.query._id again: " + req.query._id);
             //console.log("Printing the post: " + post);
