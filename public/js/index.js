@@ -25,6 +25,34 @@ $(document).ready(function () {
         }
     });
 
+    function readURLprofpic(input){
+        if (input.files && input.files[0]){
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.profile-pic-editprofile').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    function readURLfavechar(input){
+        if (input.files && input.files[0]){
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('.favechar-img-editprofile').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    
+    $(".changeprofilepic-editprofile").change(function(){
+        readURLprofpic(this);
+    });
+
+    $(".changefavecharpic-editprofile").change(function(){
+        readURLfavechar(this);
+    });
+
     // Create a post
 
     // Create a comment on a post

@@ -48,11 +48,11 @@ post
 
 
 Updated todo June 29 
-1. increment numComments when posting a comment
+(done) 1. increment numComments when posting a comment
 2. toggle of like and increment/decrement numLikes
 3. edit profile
 4. delete in general
-5. reverse display to show latest post/comment
+(done) 5. reverse display to show latest post/comment
 6. about page
 7. update readme.md
 8. upload to heroku (last thing to do)

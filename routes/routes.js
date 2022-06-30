@@ -36,4 +36,6 @@ router.post('/submit-post', isPrivate, homeController.submitPost);
 //Request revie
 router.post('/comment-post', isPrivate, homeController.submitComment);
 
+router.post('/save-editprofile', isPrivate, homeController.editProfile); 
+
 module.exports = router;

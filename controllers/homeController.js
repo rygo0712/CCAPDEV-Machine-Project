@@ -10,6 +10,7 @@ const {
     v1: uuidv1,
     v4: uuidv4,
   } = require('uuid');
+const { profile } = require('console');
 
 const homeController = {
     //to submit a post
@@ -121,9 +122,106 @@ const homeController = {
             })
             //console.log(posts);
     });
-    }
+    },
     
+    editProfile: (req, res) => {
+        //console.log('profimg' + req.files.profileImg )
+        //console.log('charimg' + req.files.faveCharImg )
+        //const profImg = req.files.profileImg
+        //const CharImg = req.files.faveCharImg
+        try {
+            console.log(req.files.profileImg)
+            const profImg = req.files.profileImg
+            let newname = uuidv4() + path.extname(profImg.name)
+            profImg.mv(path.resolve('./public/images', newname), (error) =>{
+                db.updateOne(Profile, {username: req.session.username }, {$set: {profileImg: '/images/' + newname}}, (err, res) => {
+                    console.log(res)
+                }); 
+            })
 
+        }
+        catch (e) {
+            console.log('error 1 is' + e)
+        }
+
+        try{
+            console.log(req.files.faveCharImg)
+            const CharImg = req.files.faveCharImg
+            let newname2 = uuidv4() + path.extname(CharImg.name)
+            CharImg.mv(path.resolve('./public/images', newname2), (error) =>{
+                db.updateOne(Profile, {username: req.session.username }, {$set: {faveCharImg: '/images/' + newname2}}, (err, res) => {
+                    console.log(res)
+                }); 
+            })
+        }
+        catch (e){
+            console.log('error 1 is' + e)
+        }
+        
+        // console.log(profImg)
+        // console.log(CharImg)
+
+
+        db.updateOne(Profile, {username: req.session.username }, {$set: {faveQuote: req.body.faveQuote, bio: req.body.bio}}, (err, res) => {
+            console.log(res)
+        }); 
+        /*if (req.files.profileImg != null && !(req.files.faveCharImg))
+        {
+            console.log('condition1')
+            const profImg = req.files.profileImg
+            let newname = uuidv1() + path.extname(profImg.name)
+            
+            db.updateOne(Profile, {username: req.session.username }, {$set: {faveQuote: req.body.faveQuote, bio: req.body.bio, profileImg: '/images/' + newname}}, (err, res) => {
+                console.log(res)
+            }); 
+
+        }
+        else if (req.filefaveCharImg != null && !(req.files.profileImg))
+        {
+            console.log('condition2')
+            const charImg = req.files.faveCharImg
+            let newname = uuidv1() + path.extname(charImg.name)
+            db.updateOne(Profile, {username: req.session.username }, {$set: {faveQuote: req.body.faveQuote, bio: req.body.bio, charImg: '/images/' + newname}}, (err, res) => {
+                console.log(res)
+            }); 
+        }
+        else if (req.files == null)
+        {
+            console.log('condition3')
+            db.updateOne(Profile, {username: req.session.username }, {$set: {faveQuote: req.body.faveQuote, bio: req.body.bio}}, (err, res) => {
+                console.log(res)
+            }); 
+        }
+        else if (req.files.profileImg != null && req.filefaveCharImg != null)
+        {
+            console.log('condition4')
+            const profImg = req.files.profileImg
+            const CharImg = req.files.charImg
+
+            let newname = uuidv4() + path.extname(profImg.name)
+            let newname2 = uuidv4() + path.extname(charImg.name)
+            db.updateOne(Profile, {username: req.session.username }, {$set: {faveQuote: req.body.faveQuote, bio: req.body.bio, profileImg: '/images/' + newname, charImg: '/images/' + newname2}}, (err, res) => {
+                console.log(res)
+            }); 
+        }*/
+        // db.findOne(Profile, { username: req.session.username }, '', (profile) =>{
+           
+        //     /*res.render('view_profile', { 
+        //         username: req.session.username,
+        //         profileUsername: req.session.username,
+        //         headerProfileImg: profile.profileImg,
+        //         profileImg: profile.profileImg,
+        //         faveCharImg: profile.faveCharImg,
+        //         bio: profile.bio,
+        //         faveQuote: profile.faveQuote,
+        //         pageTitle: 'View Profile', 
+        //         name: req.session.name,
+        //         layout: 'main',
+        //         isOwnProfile: true
+        //     });*/
+        // })
+        res.redirect('/view-profile?username=' + req.session.username)
+    }
 }
 
 module.exports = homeController;

@@ -1,13 +1,14 @@
 <div class="main_content_profile">
 	<p>// <a href="/view-profile">Profile</a> > Edit Profile</p>
+		<form action = "/save-editprofile" method="post" enctype="multipart/form-data">
 		<div class="profile-container">
 			<div class="profile-left-container">
 				<div class="profile-image">
-					<h2 class="username-profile">okawaiikoto's Profile</h2>
+					<h2 class="username-profile">{{this.username}}'s Profile</h2>
 					<div class="profilepic-container-editprofile">
 					<label>
-						<input type="file" class="changeprofilepic-editprofile" accept="image/*">
-						<img class="profile-pic-editprofile" src='{{this.profileImg}}' />
+						<input type="file" name="profileImg" class="changeprofilepic-editprofile" accept="image/*">
+						<img class="profile-pic-editprofile" src='{{this.headerProfileImg}}' />
 						<div class="overlay-editprofile">
 							<div class="overlaytext-editprofile">Change Picture</div>
 						</div>
@@ -17,23 +18,24 @@
 				
 			<div class="quote-container">
 				<h3 class="quote-header-profile">Edit Favorite Quote</h3>
-				<textarea class="editquote-box" wrap="soft" rows="5" cols="36" maxlength=150>{{this.faveQuote}}</textarea>
+				<textarea class="editquote-box" name="faveQuote" wrap="soft" rows="5" cols="36" maxlength=150>{{this.faveQuote}}</textarea>
 			</div>  
 
 			<div class="bio-container">
 				<h3 class="bio-header-profile">Edit Bio</h3>
-				<textarea class="editbio-box" wrap="soft" rows="9" cols="36" maxlength=300>{{this.bio}}</textarea>
+				<textarea name="bio" class="editbio-box" wrap="soft" rows="9" cols="36" maxlength=300>{{this.bio}}</textarea>
 			</div>
 				
-			<a href="/viewprofile"><button class="savechangesbtn-editprofile">Save Changes</button></a>
-			<a href="/viewprofile"><button class="cancelbtn-editprofile savechangesbtn-editprofile">Cancel</button></a>
+			<button type = "submit" class="savechangesbtn-editprofile">Save Changes</button>
+			{{!-- <button type = "button" href="/view-profile?username={{this.username}}" class="cancelbtn-editprofile savechangesbtn-editprofile">Cancel</button> --}}
+			<a href="/view-profile?username={{this.username}}" class="cancelbtn-editprofile savechangesbtn-editprofile">Cancel</a> 
 		</div>
 			
 		<div class="profile-right-container">
-			<h3 class="favechar-header-profile">okawaiikoto's Favorite Character</h3>
+			<h3 class="favechar-header-profile">{{this.username}}'s Favorite Character</h3>
 			<div class="favecharpic-container-editprofile">
 			<label>
-				<input type="file" class="changefavecharpic-editprofile" accept="image/*">
+				<input type="file" name="faveCharImg" class="changefavecharpic-editprofile" accept="image/*">
 				<img src='{{this.faveCharImg}}' class="favechar-img-editprofile"/>
 				<div class="overlay-favechar-editprofile">
 					<div class="overlaytext-favechar-editprofile">Change Picture</div>
@@ -41,5 +43,6 @@
 			</label>
 			</div>
 		</div>  
-
+		</div>
+		</form>
 </div>
