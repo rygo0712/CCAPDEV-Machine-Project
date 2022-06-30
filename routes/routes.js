@@ -5,6 +5,8 @@ const homeController = require('../controllers/homeController.js')
 
 const { isPrivate } = require('../middlewares/checkAuth'); //requires users to be logged in to access these pages
 
+const { postValidation } = require('../validators.js');
+
 const Comment = require('../models/Comment.js');
 const Post = require('../models/Post.js');
 const Profile = require('../models/Profile.js');
@@ -37,5 +39,7 @@ router.post('/submit-post', isPrivate, homeController.submitPost);
 router.post('/comment-post', isPrivate, homeController.submitComment);
 
 router.post('/save-editprofile', isPrivate, homeController.editProfile); 
+
+router.post('/save-editpost', isPrivate, homeController.editPost);
 
 module.exports = router;

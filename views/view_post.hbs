@@ -16,6 +16,13 @@
 	<p class="text-post">
 		{{ post.textContent }}
 	</p>
+	{{#if this.isOwnPost }}
+		<a class="editpostbtn-viewpost">Edit Post</a>
+	{{/if}}
+
+	<div class="editpost-container"></div>
+	
+
 	
 </div>
 

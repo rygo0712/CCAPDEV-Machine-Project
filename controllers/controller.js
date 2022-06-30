@@ -131,7 +131,8 @@ const controller = {
                         pageTitle: 'View Post', 
                         name: req.session.name,
                         layout: 'main', 
-                        _id: req.query._id
+                        _id: req.query._id,
+                        isOwnPost: (req.session.username === post.username)
                     });
                 }) 
             })

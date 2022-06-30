@@ -21,7 +21,7 @@ const registrationValidation = [
       }
       return true;
     })
-]
+];
 
 const loginValidation = [
   // Email should not be empty and must be a valid email
@@ -31,4 +31,9 @@ const loginValidation = [
   body('password').not().isEmpty().withMessage("Password is required.")
 ];
 
-module.exports = { registrationValidation, loginValidation };
+const postValidation = [
+  // Post title should not be empty
+  body('title').not().isEmpty().withMessage("Post title cannot be empty.")
+];
+
+module.exports = { registrationValidation, loginValidation, postValidation };

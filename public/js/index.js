@@ -25,6 +25,7 @@ $(document).ready(function () {
         }
     });
 
+    // Preview of uploaded images
     function readURLprofpic(input){
         if (input.files && input.files[0]){
             var reader = new FileReader();
@@ -52,6 +53,26 @@ $(document).ready(function () {
     $(".changefavecharpic-editprofile").change(function(){
         readURLfavechar(this);
     });
+
+    // Editing post
+    $(".editpostbtn-viewpost").on('click', function() {
+        if ($(".editpost-container").html() == '')
+        {
+            $(".editpost-container").html(`<form action="/save-editpost" method="post" enctype="multipart/form-data">
+            <input type="hidden" class="editpost-id" name="_id" value="` + $(".post-like").val() + `"/>
+            <textarea class="content-box" wrap="soft" name="textContent">` + $('.text-post').text().trim() + `</textarea>
+            <input type="file" value="Attach media" class="post-upload-image" accept="image/*" name="imageContent"/>
+            <input type="submit" value="Save Changes" class="submit-post" value="SUBMIT" />
+            </form>`);
+        }
+        else
+        {
+            $(".editpost-container").html('');
+        }
+        
+        
+    }); 
+
 
     // Create a post
 

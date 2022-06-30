@@ -15,43 +15,51 @@ const { profile } = require('console');
 const homeController = {
     //to submit a post
     submitPost: (req, res) => {
-        if(req.files != null){
-            const image = req.files.imageContent
-            //console.log(image);
-            let newname = uuidv1() + path.extname(image.name);
-            fs.stat('./public/images/' + newname, function(err, data){
-                if(err){
-                    image.name = newname;
-                }
-            });
-                
-                
-            //console.log(req.files.imageContent)
-            //console.log(path.resolve('./public/images', newname));
-            image.mv(path.resolve('./public/images', newname), (error) => {
+        
+        if (req.body.title == '')
+        {
+            req.flash('error_msg', 'Title must not be empty.');
+            res.redirect('/');
+        }
+        else
+        {
+            if(req.files != null){
+                const image = req.files.imageContent
+                //console.log(image);
+                let newname = uuidv1() + path.extname(image.name);
+                fs.stat('./public/images/' + newname, function(err, data){
+                    if(err){
+                        image.name = newname;
+                    }
+                });
+                    
+                //console.log(req.files.imageContent)
+                //console.log(path.resolve('./public/images', newname));
+                image.mv(path.resolve('./public/images', newname), (error) => {
+                    Post.create({
+                        title: req.body.title,
+                        textContent: req.body.textContent,
+                        imageContent: '/images/' + newname,
+                        username: req.session.username
+                    },  (error, post) => {
+                        console.log("on post creation: " + post._id);
+                        res.redirect('/');
+                    })
+                });
+            } 
+            else{
                 Post.create({
                     title: req.body.title,
                     textContent: req.body.textContent,
-                    imageContent: '/images/' + newname,
-                    username: req.session.username
+                    username: req.session.username,
                 },  (error, post) => {
                     console.log("on post creation: " + post._id);
                     res.redirect('/');
                 })
-        });} 
-        else{
-            Post.create({
-                title: req.body.title,
-                textContent: req.body.textContent,
-                username: req.session.username,
-            },  (error, post) => {
-                console.log("on post creation: " + post._id);
-                res.redirect('/');
-            })
-        }
+            }
 
-        
-      },
+        }
+    },
 
     //submit a comment for the post
     
@@ -221,6 +229,30 @@ const homeController = {
         //     });*/
         // })
         res.redirect('/view-profile?username=' + req.session.username)
+    },
+
+    editPost: (req, res) => {
+        try {
+            const newImg = req.files.imageContent;
+            let newname = uuidv1() + path.extname(newImg.name);
+            newImg.name = newname;
+         
+            newImg.mv(path.resolve('./public/images', newname), (error) =>{
+                db.updateOne(Post, {_id: req.body._id }, {$set: {imageContent: '/images/' + newname}}, (err, res) => {
+                    console.log(res)
+                }); 
+            });
+
+        }
+        catch (e) {
+            
+        }
+
+        db.updateOne(Post, {_id: req.body._id }, {$set: {textContent: req.body.textContent}}, (err, res) => {
+            console.log(res);
+        }); 
+
+        res.redirect('/view-post?_id=' + req.body._id);
     }
 }
 

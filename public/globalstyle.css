@@ -37,9 +37,9 @@ input[type="text"],input[type="search"],input[type="email"],input[type="password
 	color: gray;
 	border-radius: 10px;
 	border: 2px solid #ccc;
-	letter-spacing: 2px;
-	font-size: 15px;
-	height: 15px;
+	letter-spacing: 1px;
+	font-size: 12px;
+	height: 20px;
 	width: 300px;
 }
 
@@ -183,7 +183,7 @@ img {
 
 .text-post {
 	margin: 10px;
-	font-size: 15px;
+	font-size: 16px;
 	line-height: 25px;
 	float: left;
 }
@@ -219,10 +219,12 @@ img {
 /* for title, like and count of main post */
 .post-header {
 	margin-top: 20px;
+	
 }
 
 .post-title {
 	font-size: 26px;
+	margin-bottom: 15px;
 }
 
 .post-poster-time {
@@ -286,7 +288,8 @@ img {
 	padding-bottom: 100px !important;
 	padding-top: 10px !important;
 	margin-top: 10px;
-	font-size: 18px !important;
+	font-size: 16px !important;
+	margin-bottom: 8px;
 }
 .comment-thread {
 	margin-top: 30px;
@@ -495,6 +498,8 @@ img {
 	border-radius: 10px;
 	padding: 10px;
 	width: 350px;
+	height: 200px;
+	word-break: break-word;
 }
 
 .favechar-header-profile
@@ -527,6 +532,20 @@ img {
 	margin: 15px 150px 50px 50px;
 	padding: 5px;
 	border-radius: 5px;
+}
+
+.editpostbtn-viewpost
+{
+	float: right;
+	margin-right: 10px;
+	text-decoration: underline;
+	color: orange !important;
+}
+
+.editpostbtn-viewpost:hover
+{
+	cursor: pointer;
+	color: gray !important;
 }
 
 /* end of view profile */
