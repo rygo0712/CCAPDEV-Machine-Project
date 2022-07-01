@@ -249,6 +249,7 @@ const homeController = {
     },
 
     deleteProfile: (req, res) => {
+        var name = req.session.username
         User.deleteOne(req.session.username, (deleteUser) => {
 
         });
@@ -263,44 +264,39 @@ const homeController = {
         });
         
         // Removing the user's likes from all posts and comments in the db
-        db.findMany(Post, {}, '', function(posts) {
-            posts.forEach(element => {
-                db.updateOne(Post, {_id: element._id}, {$pull: {likesBy: req.session.username}}, (err, res) => {}
-                );
-            });
+        // db.findMany(Post, {}, '', function(posts) {
+        //     posts.forEach(element => {
+        //         db.updateOne(Post, {_id: element._id}, {$pull: {likesBy: name}}, (err, res) => {}
+        //         );
+        //     });
+        // });
+
+        // db.findMany(Comment, {}, '', function(comments) {
+        //     comments.forEach(element => {
+        //         db.updateOne(Comment, {_id: element._id}, {$pull: {likesBy: name}}, (err, res) => {}
+        //         );
+        //     });
+        // });
+
+       
+        db.updateMany(Post, {}, {$pull: {likesBy: req.session.username} }, (err, res) => {
+
         });
 
-        db.findMany(Comment, {}, '', function(comments) {
-            comments.forEach(element => {
-                db.updateOne(Comment, {_id: element._id}, {$pull: {likesBy: req.session.username}}, (err, res) => {}
-                );
-            });
-        });
+        db.updateMany(Comment, {}, {$pull: {likesBy: req.session.username} }, (err, res) => {
 
-        /* COMMENTED OUT: updateMany causing callback errors
-        db.updateMany(Post, 
-            {}, 
-            {$pull: {likesBy: req.session.username} }, 
-            {multi: true},
-            (err, res) => {}
+        }
         );
-
-        db.updateMany(Comment, 
-            {}, 
-            {$pull: {likesBy: req.session.username} }, 
-            {multi: true},
-            (err, res) => {}
-        );
-        */
+        
         // Updating numComments of each post
         db.findMany(Post, {}, '', function(posts) {
             posts.forEach(element => {
                 db.findMany(Comment, {postid: element._id}, '', function(comments) {
-                    db.updateOne(Post, {_id: element._id}, {$set: {numComments: comments.length}},{multi: true}, (err, res) => {}
+                    db.updateOne(Post, {_id: element._id}, {$set: {numComments: comments.length}}, (err, res) => {}
                     );
                 })
             });
-       });
+        });
 
         // Clearing the current session 
         if (req.session) {
