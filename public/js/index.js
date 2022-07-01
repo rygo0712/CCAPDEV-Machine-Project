@@ -86,7 +86,7 @@ $(document).ready(function () {
                 
             });
             // it wont redirect back to home ??
-            $.get('/home');
+            window.location.href = "/home";
         }
         else
         {

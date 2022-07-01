@@ -200,7 +200,7 @@ const homeController = {
         console.log("homeController deletePost req.query._id: " + req.query._id);
         db.deleteOne(Post, {_id: req.query._id}, (result) => {
             // it wont redirect home idk why
-            res.redirect('/home');
+            //res.redirect('/home');
         });
     }
 }
