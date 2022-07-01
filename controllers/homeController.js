@@ -120,6 +120,7 @@ const homeController = {
                 element.postingTime = moment(element.postingTime).fromNow();
             });
             posts = posts.reverse();
+            //req.session.destroy();
             db.findOne(Profile, { username: req.session.username }, '', (header) =>{ //profile pic query
                 res.render('home', { 
                     posts,
@@ -250,21 +251,46 @@ const homeController = {
     deleteProfile: (req, res) => {
         User.deleteOne(req.session.username, (deleteUser) => {
 
-        })
+        });
         db.deleteOne(Profile, {username: req.session.username}, (deleteProfile) => {
 
-        })
+        });
         db.deleteMany(Post, {username: req.session.username}, (deletePost) => {
             
-        })
+        });
         db.deleteMany(Comment, {username: req.session.username}, (deleteComment) => {
 
-        })
+        });
         
+        // Removing the user's likes from all posts and comments in the db
+        db.updateMany(Post, 
+            {}, 
+            {$pull: {likesBy: req.session.username} }, 
+            {multi: true},
+            (err, res) => {}
+        );
+
+        db.updateMany(Comment, 
+            {}, 
+            {$pull: {likesBy: req.session.username} }, 
+            {multi: true},
+            (err, res) => {}
+        );
+
+        // Updating numComments of each post
+        db.findMany(Post, {}, '', function(posts) {
+            posts.forEach(element => {
+                db.findMany(Comment, {postid: element._id}, '', function(comments) {
+                    db.updateOne(Post, {_id: element._id}, {$set: {numComments: comments.length}},{multi: true}, (err, res) => {}
+                    );
+                })
+            });
+       });
+
+        // Clearing the current session 
         if (req.session) {
             req.session.destroy(() => {
               res.clearCookie('connect.sid');
-            //   res.redirect('/login');
             });
           }
     }
