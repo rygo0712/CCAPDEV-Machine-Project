@@ -443,6 +443,7 @@ img {
 	margin-right: 0px;
 	height: 60px;
 	float: left;
+	width: 60px;
 }
 
 .username-div
@@ -505,7 +506,12 @@ img {
 	width: 350px;
 	height: 200px;
 	word-break: break-word;
+	white-space: pre-line;
+	
+	/* overflow: hidden;
+	text-overflow: ellipsis; */
 }
+
 
 .favechar-header-profile
 {
@@ -513,16 +519,7 @@ img {
 	white-space: nowrap;
 	margin-top: 20px;
 }
-/*
-.favechar-name-viewprofile
-{
-	margin-bottom: 15px;
-	overflow: hidden;
-	white-space: nowrap;
-	font-size: 125%;
-	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
-}
-*/
+
 .favechar-img-profile, .favechar-img-editprofile
 {
 	border-radius: 15%;
@@ -531,7 +528,7 @@ img {
 	margin-top: 25px;
 }
 
-.editprofilebtn-viewprofile
+.editprofilebtn-viewprofile, .deleteprofilebtn-viewprofile
 {
 	float: right;
 	margin: 15px 150px 50px 50px;
@@ -539,7 +536,7 @@ img {
 	border-radius: 5px;
 }
 
-.viewpost-btns, .deletepostbtn-viewpost, .deletecommentbtn-viewpost, .editpostbtn-viewpost
+.viewpost-btns, .deletepostbtn-viewpost, .deletecommentbtn-viewpost, .editpostbtn-viewpost, .editcommentbtn-viewpost
 {
 	float: right;
 	margin-left: 5px;
@@ -553,7 +550,7 @@ img {
 	margin-right: 5px;
 }
 */
-.editpostbtn-viewpost:hover, .deletepostbtn-viewpost:hover, .deletecommentbtn-viewpost:hover
+.editpostbtn-viewpost:hover, .deletepostbtn-viewpost:hover, .deletecommentbtn-viewpost:hover, .editcommentbtn-viewpost:hover
 {
 	cursor: pointer;
 	color: gray !important;
@@ -582,7 +579,7 @@ img {
 	font-size: 100%;
 	overflow: hidden;
 	padding-bottom: 20px !important;
-	height: auto;
+	height: 200px;
 }
 
 .changeprofilepic-editprofile, .changefavecharpic-editprofile

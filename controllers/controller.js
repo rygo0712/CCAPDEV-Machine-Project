@@ -136,6 +136,7 @@ const controller = {
                         layout: 'main', 
                         _id: req.query._id,
                         isOwnPost: (req.session.username === post.username)
+                        
                     });
                 }) 
             })

@@ -2,6 +2,7 @@ const db = require('../models/db.js');
 const Post = require('../models/Post.js');
 const Profile = require('../models/Profile.js');
 const Comment = require('../models/Comment.js');
+const User = require('../models/User.js');
 const moment = require('moment');
 const path = require('path');
 const fs = require('fs');
@@ -132,6 +133,11 @@ const homeController = {
     });
     },
     
+
+
+
+    
+
     editProfile: (req, res) => {
         //console.log('profimg' + req.files.profileImg )
         //console.log('charimg' + req.files.faveCharImg )
@@ -195,6 +201,31 @@ const homeController = {
         res.redirect('/view-post?_id=' + req.body._id);
     },
 
+    editComment: (req, res) => {
+        try{
+            const newImg = req.files.imageContent;
+            let newname = uuidv1() + path.extname(newImg.name);
+            newImg.name = newname;
+
+            newImg.mv(path.resolve('./public/images', newname), (error) => {
+                db.updateOne(Comment, {_id: req.body._id}, {$set: {imageContent: '/images/' + newname}}, (err, res) => {
+
+                });
+            });
+        }
+        catch(e){
+
+        }
+        db.updateOne(Comment, {_id: req.body._id}, {$set: {textContent: req.body.textContent}}, (err, res) => {
+
+        });
+
+        db.findOne(Comment, {_id: req.body._id}, '', (commentresult)=> {
+            res.redirect('/view-post?_id=' + commentresult.postid);
+        }) 
+    },
+
+
     deletePost: (req, res) => {
         
         console.log("homeController deletePost req.query._id: " + req.query._id);
@@ -214,6 +245,28 @@ const homeController = {
             // it wont redirect home idk why
             //res.redirect('/home');
         });
+    },
+
+    deleteProfile: (req, res) => {
+        User.deleteOne(req.session.username, (deleteUser) => {
+
+        })
+        db.deleteOne(Profile, {username: req.session.username}, (deleteProfile) => {
+
+        })
+        db.deleteMany(Post, {username: req.session.username}, (deletePost) => {
+            
+        })
+        db.deleteMany(Comment, {username: req.session.username}, (deleteComment) => {
+
+        })
+        
+        if (req.session) {
+            req.session.destroy(() => {
+              res.clearCookie('connect.sid');
+            //   res.redirect('/login');
+            });
+          }
     }
 }
 

@@ -61,7 +61,7 @@ $(document).ready(function () {
         {
             $(".editpost-container").html(`<form action="/save-editpost" method="post" enctype="multipart/form-data">
             <input type="hidden" class="editpost-id" name="_id" value="` + $(".post-like").val() + `"/>
-            <textarea class="content-box" wrap="soft" name="textContent">` + $('.main-content .text-post').text().trim() + `</textarea>
+            <textarea class="content-box" wrap="soft" name="textContent">` + $('.main_content .text-post').text().trim() + `</textarea>
             <input type="file" value="Attach media" class="post-upload-image" accept="image/*" name="imageContent"/>
             <input type="submit" value="Save Changes" class="submit-post" value="SUBMIT" />
             </form>`);
@@ -70,7 +70,6 @@ $(document).ready(function () {
         {
             $(".editpost-container").html('');
         }
-        
         
     }); 
 
@@ -116,6 +115,39 @@ $(document).ready(function () {
         }
     });
 
+    $(".deleteprofilebtn-viewprofile").on('click', function(){
+
+        
+        if (confirm("Are you sure you want to delete your profile?"))
+        {
+            $.get('/delete-profile', {}, (result) => {
+
+            })
+            window.location.href = "/login"
+        }
+        else
+        {
+            console.log("Profile not deleted");
+        }
+    })
+
+    $(".editcommentbtn-viewpost").on('click', function() {
+        var obj = $(this);
+        //console.log(obj.parent().siblings('.comment-likedate-container').children('.comment-like').val());
+        if (obj.parent().siblings(".editcomment-container").html() == '')
+        {
+            obj.parent().siblings(".editcomment-container").html(`<form action="/save-editComment" method="post" enctype="multipart/form-data">
+            <input type="hidden" class="editpost-id" name="_id" value="` + obj.parent().siblings('.comment-likedate-container').children('.comment-like').val() + `"/>
+            <textarea class="content-box" wrap="soft" name="textContent">` + obj.parent().siblings('.text-post').text().trim() + `</textarea>
+            <input type="file" value="Attach media" class="post-upload-image" accept="image/*" name="imageContent"/>
+            <input type="submit" value="Save Changes" class="submit-post" value="SUBMIT" />
+            </form>`);
+        }
+        else
+        {
+            $(".editcomment-container").html('');
+        }
+    }); 
 
     // Create a post
 

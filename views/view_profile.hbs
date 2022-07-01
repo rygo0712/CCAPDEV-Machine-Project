@@ -9,26 +9,26 @@
 				
 				<div class="quote-container">
 					<h3 class="quote-header-profile">Favorite Quote</h3>
-					<p class="quote-text-profile" >
+					<pre class="quote-text-profile" >
 						{{ this.faveQuote }}
-					</p>
+					</pre>
 				</div>  
 
 				<div class="bio-container">
 					<h3 class="bio-header-profile">Bio</h3>
-					<p class="bio-text-profile" >
+					<pre class="bio-text-profile" >
 						{{ this.bio }}
-					</p>
+					</pre>
 				</div>
 				
-				<div class="recentactivity-container">
+				{{!-- <div class="recentactivity-container">
 					<h3 class="recentactivity-header-profile">Recent Activity</h3>
 					<p class="recentactivity-text-profile">
 						12/30/20: Commented on username321's post <br>
 						12/25/20: Made a post <br>
 						12/20/20: Commented on username436's post
 					</p>
-				</div>
+				</div> --}}
 			</div>
 			
 			<div class="profile-right-container">
@@ -37,6 +37,8 @@
 					
 				{{#if this.isOwnProfile}}
 				<a href="/edit-profile"><button class="editprofilebtn-viewprofile">Edit Profile</button></a>
+				<button class="deleteprofilebtn-viewprofile">Delete Profile</button>
 				{{/if}}
+
 			</div>  
 </div>

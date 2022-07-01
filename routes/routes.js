@@ -44,4 +44,10 @@ router.get('/delete-post', isPrivate, homeController.deletePost);
 
 router.get('/delete-comment', isPrivate, homeController.deleteComment);
 
+router.get('/delete-profile' , isPrivate, homeController.deleteProfile);
+
+router.post('/save-editComment' , isPrivate, homeController.editComment);
+
+
+
 module.exports = router;

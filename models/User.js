@@ -31,3 +31,9 @@ exports.getOne = function(query, next) {
       next(err, user);
     });
   };
+
+exports.deleteOne = function (username, next) {
+  User.deleteOne({username: username}, function(err, user){
+    next(err, user);
+  });
+};
