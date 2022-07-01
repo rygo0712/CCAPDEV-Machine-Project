@@ -11,6 +11,11 @@
 				{{textContent}}
 				{{#if imageContent}}<img class="image-post" src="./{{imageContent }}">{{/if}}
 			</p>
+			{{#if this.isOwnComment }}
+				<div class="viewpost-btns">
+					<a class="deletecommentbtn-viewpost">Delete Comment</a>
+				</div>
+			{{/if}}
 		</div>
 		
 		<!--{{#each commentchilds}}

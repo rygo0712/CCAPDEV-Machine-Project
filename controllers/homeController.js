@@ -199,6 +199,18 @@ const homeController = {
         
         console.log("homeController deletePost req.query._id: " + req.query._id);
         db.deleteOne(Post, {_id: req.query._id}, (result) => {
+            db.deleteMany(Comment, {postid: req.query._id}, (comment_result) => {
+                console.log('Comment deletion: ' + comment_result);
+            })
+            // it wont redirect home idk why
+            //res.redirect('/home');
+        });
+    },
+
+    deleteComment: (req, res) => {
+        
+        console.log("homeController deleteComment req.query._id: " + req.query._id);
+        db.deleteOne(Comment, {_id: req.query._id}, (result) => {
             // it wont redirect home idk why
             //res.redirect('/home');
         });

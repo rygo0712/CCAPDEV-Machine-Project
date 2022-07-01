@@ -42,4 +42,6 @@ router.post('/save-editpost', isPrivate, homeController.editPost);
 
 router.get('/delete-post', isPrivate, homeController.deletePost);
 
+router.get('/delete-comment', isPrivate, homeController.deleteComment);
+
 module.exports = router;

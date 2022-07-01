@@ -122,6 +122,7 @@ const controller = {
                 comments = comments.map(comments => comments.toJSON());
                 comments.forEach(element => {
                     element.postingTime = moment(element.postingTime).fromNow();
+                    element.isOwnComment = req.session.username === element.username
                 });
                 comments = comments.reverse();
                 db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query

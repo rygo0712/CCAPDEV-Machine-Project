@@ -83,10 +83,32 @@ $(document).ready(function () {
             //console.log("postId: " + postId);
             $.get('/delete-post', { _id: postId }, (result) => {
                 //console.log("delete post result: " + result);
+
+               
                 
             });
             // it wont redirect back to home ??
             window.location.href = "/home";
+        }
+        else
+        {
+            console.log("post was not deleted");
+        }
+    });
+
+    $(".deletecommentbtn-viewpost").on('click', function() {
+        var postId = $('.post-like').val();
+        var obj = $(this);
+
+        if (confirm("Are you sure you want to delete your comment?"))
+        {
+            //console.log("postId: " + postId);
+            $.get('/delete-comment', { _id: obj.parent().siblings('.comment-likedate-container').children('.comment-like').val() }, (result) => {
+                //console.log("delete post result: " + result);
+                
+            });
+            // it wont redirect back to home ??
+            window.location.href = "/view-post?_id=" + postId;
         }
         else
         {

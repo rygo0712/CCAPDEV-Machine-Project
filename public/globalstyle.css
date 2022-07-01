@@ -539,7 +539,7 @@ img {
 	border-radius: 5px;
 }
 
-.viewpost-btns, .deletepostbtn-viewpost, .editpostbtn-viewpost
+.viewpost-btns, .deletepostbtn-viewpost, .deletecommentbtn-viewpost, .editpostbtn-viewpost
 {
 	float: right;
 	margin-left: 5px;
@@ -553,7 +553,7 @@ img {
 	margin-right: 5px;
 }
 */
-.editpostbtn-viewpost:hover, .deletepostbtn-viewpost:hover
+.editpostbtn-viewpost:hover, .deletepostbtn-viewpost:hover, .deletecommentbtn-viewpost:hover
 {
 	cursor: pointer;
 	color: gray !important;
