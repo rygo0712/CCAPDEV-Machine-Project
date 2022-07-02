@@ -31,16 +31,26 @@ const controller = {
     },
 
     // Display home page
-    getHome: async(req, res) => {
-        const posts = await Post.find({});
-        
-        // Load posts from MongoDB query
-        res.render('home', {
-            posts, 
-            pageTitle: 'Home', 
-            name: req.session.name,
-            layout: 'main'
-        });
+    getPosts: (req,res) => {
+        db.findMany(Post, {}, '', function (posts){
+            //console.log(posts);
+            posts = posts.map(posts => posts.toJSON()); //formats 'posts' to JSON to remove mongoose schema formatting to edit the date on the next step
+            posts.forEach(element => { //uses the moments module to format the date
+                element.postingTime = moment(element.postingTime).fromNow();
+            });
+            posts = posts.reverse();
+            //req.session.destroy();
+            db.findOne(Profile, { username: req.session.username }, '', (header) =>{ //profile pic query
+                res.render('home', { 
+                    posts,
+                    username: req.session.username,
+                    headerProfileImg: header.profileImg,
+                    pageTitle: 'Home', 
+                    name: req.session.name,
+                    layout: 'main' } );
+            })
+            //console.log(posts);
+    });
     },
 
     // Display view profile page
@@ -204,7 +214,10 @@ const controller = {
             }
         });
         
-        
+    },
+
+    searchPosts: (req, res) => {
+
     }
 
 }

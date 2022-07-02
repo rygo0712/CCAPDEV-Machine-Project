@@ -16,10 +16,10 @@ const User = require('../models/User.js');
 const path = require('path');
 
 
-router.get('/', isPrivate, homeController.getPosts);
+router.get('/', isPrivate, controller.getPosts);
 
 //duplicate route for home
-router.get('/home', isPrivate, homeController.getPosts);
+router.get('/home', isPrivate, controller.getPosts);
 
 
 router.get('/view-profile', isPrivate, controller.getViewProfile);
@@ -48,6 +48,7 @@ router.get('/delete-profile' , isPrivate, homeController.deleteProfile);
 
 router.post('/save-editComment' , isPrivate, homeController.editComment);
 
+router.get('/search-posts', isPrivate, controller.searchPosts);
 
 
 module.exports = router;
