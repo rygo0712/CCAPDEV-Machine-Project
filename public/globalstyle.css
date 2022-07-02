@@ -5,6 +5,11 @@
 	font-family: Helvetica, Arial, sans-serif;
 }
 
+hr{
+	border-color: #ffd7b7;
+}
+
+
 a {
 	transition: 0.2s;
 	color: gray;
@@ -117,6 +122,31 @@ img {
 	z-index: 10;
 	background-color: white;
 }
+
+.search-result{
+	position: absolute;
+	width: 23%;
+	left: 300px;
+	top: 60px;
+	background-color: white;
+}
+
+
+.post-searchresult, .profile-searchresult{
+	width: 100%;
+	background-color: white;
+	color: #ff7200;
+	padding: 5px;
+	border: 2px black !important;
+	text-align: left;
+}
+
+
+.post-searchresult:hover, .profile-searchresult:hover{
+	background-color: #ff7200;
+	color: white;
+}
+
 
 .error{
 	color: red;
@@ -370,15 +400,18 @@ img {
 .search
 {
 	height: 60px;
-	width: 35%;
+	width: 30%;
 	float: left;
+	margin: 0px;
+	padding: 0px;
 }
 .shortcut
 {
 	height: 60px;
 	font-size: 20px;
 	float: left;
-	width: 25%;
+	width: 30%;
+	
 }
 
 

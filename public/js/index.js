@@ -149,6 +149,59 @@ $(document).ready(function () {
         }
     }); 
 
+
+    $(".searchinput").on("keyup focusin", function(){
+        let objVal = $(this).val()
+        $('.search-result').empty();
+
+        if(objVal != ""){
+            var searchQuery = {
+                text: {$regex: objVal,  $options: "ig"}
+            };
+            $.get("/search-posts", searchQuery, function(result){
+                let resultArray = result.returnResult;
+                console.log(resultArray);
+                resultArray.forEach(element => {
+                    if(element.contentType === 'post'){
+                        $('.search-result').append('<button type=\'button\' class=\'post-searchresult\' onclick=location.href=\'/view-post?_id=' + element._id + '\'>' +  element.title + ' : post</button><hr>')
+                    }else if(element.contentType === 'profile'){
+                        $('.search-result').append('<button class=\'profile-searchresult\' onclick=location.href=\'/view-profile?username=' + element.username + '\'>' +  element.username + ' : profile</button><hr>')
+                    }
+                })
+            })  
+        }  
+    })
+
+    $(window).keydown(function(event){
+        if(event.keyCode == 13) {
+          event.preventDefault();
+          return false;
+        }
+      });
+
+
+
+/*
+    $(".search-result").on("focusout", function(){
+        var evt = window.event;
+        console.log(evt.target.className);
+        if(evt.target.className != "post-searchresult" || evt.target.className != "profile-searchresult")
+            $('.search-result').empty();
+    })
+*/
+/*
+    $('.post-searchresult').on('click', function(){
+        let obj = $(this);
+        console.log('clicked');
+        windows.location.href = '/view-post?_id=' + obj.val();
+    })
+
+    $('.profile-searchresult').on('click', function(){
+        let obj = $(this);
+        windows.location.href = '/view-profile?username=' + obj.val();
+    })
+*/
+
     // Create a post
 
     // Create a comment on a post

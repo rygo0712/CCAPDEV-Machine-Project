@@ -231,6 +231,31 @@ const controller = {
 
     searchPosts: (req, res) => {
 
+        let returnArray = [];
+        let postTitle = {
+            title: req.query.text
+        }
+        let user_name = {
+            username: req.query.text
+        }
+        db.findMany(Post, postTitle, 'title _id', function(posts){
+            posts = posts.map(posts => posts.toJSON());
+            posts.forEach(element => {
+                element.contentType = 'post';
+            })
+            Array.prototype.push.apply(returnArray, posts);
+            //console.log("returnArray: " + returnArray);
+            db.findMany(Profile, user_name, 'username', function(profiles){
+                profiles = profiles.map(profiles => profiles.toJSON());
+                profiles.forEach(element => {
+                    element.contentType = 'profile';
+                })
+                Array.prototype.push.apply(returnArray, profiles);
+                console.log("returnArray: " + returnArray);
+                res.json({ returnResult: returnArray });
+            })
+        })
+        
     }
 
 }
