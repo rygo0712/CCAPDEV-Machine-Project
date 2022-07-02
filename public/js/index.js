@@ -156,7 +156,7 @@ $(document).ready(function () {
 
         if(objVal != ""){
             var searchQuery = {
-                text: {$regex: objVal,  $options: "ig"}
+                text: objVal
             };
             $.get("/search-posts", searchQuery, function(result){
                 let resultArray = result.returnResult;

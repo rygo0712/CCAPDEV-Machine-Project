@@ -233,12 +233,13 @@ const controller = {
 
         let returnArray = [];
         let postTitle = {
-            title: req.query.text
+            title: new RegExp(req.query.text, "ig")
         }
         let user_name = {
-            username: req.query.text
+            username: new RegExp(req.query.text, "ig")
         }
         db.findMany(Post, postTitle, 'title _id', function(posts){
+            //console.log("posts: " + posts);
             posts = posts.map(posts => posts.toJSON());
             posts.forEach(element => {
                 element.contentType = 'post';
