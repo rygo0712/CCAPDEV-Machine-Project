@@ -175,24 +175,28 @@ const homeController = {
     },
 
     editComment: (req, res) => {
-        try{
-            const newImg = req.files.imageContent;
-            let newname = uuidv1() + path.extname(newImg.name);
-            newImg.name = newname;
-
-            newImg.mv(path.resolve('./public/images', newname), (error) => {
-                db.updateOne(Comment, {_id: req.body._id}, {$set: {imageContent: '/images/' + newname}}, (err, res) => {
-
+        if (req.body.textContent != '')
+        {   
+            try{
+                const newImg = req.files.imageContent;
+                let newname = uuidv1() + path.extname(newImg.name);
+                newImg.name = newname;
+    
+                newImg.mv(path.resolve('./public/images', newname), (error) => {
+                    db.updateOne(Comment, {_id: req.body._id}, {$set: {imageContent: '/images/' + newname}}, (err, res) => {
+    
+                    });
                 });
+            }
+            catch(e){
+    
+            }
+            db.updateOne(Comment, {_id: req.body._id}, {$set: {textContent: req.body.textContent}}, (err, res) => {
+    
             });
         }
-        catch(e){
-
-        }
-        db.updateOne(Comment, {_id: req.body._id}, {$set: {textContent: req.body.textContent}}, (err, res) => {
-
-        });
-
+        
+    
         db.findOne(Comment, {_id: req.body._id}, '', (commentresult)=> {
             res.redirect('/view-post?_id=' + commentresult.postid);
         }) 

@@ -397,6 +397,12 @@ img {
 	float: left;
 	margin-left: 1%;
 }
+
+.icon:hover
+{
+	cursor: pointer;
+}
+
 .search
 {
 	height: 60px;
@@ -468,7 +474,7 @@ img {
 	width: 200px;
 	font-size: 100%;
 	text-align: center;
-	
+	transition: all 0.2s ease-in-out;
 }
 
 .profilepic-display
@@ -483,6 +489,12 @@ img {
 {
 	width: auto;
 	height: auto;
+}
+
+.profile:hover
+{
+	background-color: rgb(255, 221, 159);
+	transition: all 0.2s ease-in-out;
 }
 
 .username-display
