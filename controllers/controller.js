@@ -8,6 +8,7 @@ const moment = require('moment');
 var path = require('path');
 const { cp } = require('fs');
 const { devNull } = require('os');
+const { ExpressHandlebars } = require('express-handlebars');
 // this was causing the warning for circular dependency
 // controller requires routes but routes also requires controller
 //const { post } = require('../routes/routes.js');
@@ -28,6 +29,18 @@ const controller = {
             pageTitle: 'Registration',
             layout: 'index'
         });
+    },
+
+    getAbout: (req, res) => {
+        db.findOne(Profile, { username: req.session.username }, 'profileImg', (header) =>{ //profile pic query
+            res.render('about', { 
+                username: req.session.username,
+                headerProfileImg: header.profileImg,
+                pageTitle: 'About Animatrix', 
+                name: req.session.name,
+                layout: 'main'
+            });
+        }) 
     },
 
     // Display home page

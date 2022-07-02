@@ -50,5 +50,6 @@ router.post('/save-editComment' , isPrivate, homeController.editComment);
 
 router.get('/search-posts', isPrivate, controller.searchPosts);
 
+router.get('/about', isPrivate, controller.getAbout);   
 
 module.exports = router;

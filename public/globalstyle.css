@@ -457,6 +457,39 @@ img {
 	padding-top: 24px;
 	color: #6e2500;
 }
+
+.aboutpage-header
+{
+	margin-bottom: 25px;
+}
+
+.aboutpage-container
+{
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	/*margin: 5%;*/
+	background-color: whitesmoke;
+	display: inline-block;
+	padding: 10px;
+	padding-bottom: 30px;
+	width:800px; 
+	margin-left: 25%;
+	margin-top: 3%;
+}
+
+.aboutpage-list 
+{
+	list-style-position: inside;
+	text-align: left;
+}
+
+.aboutpage-list li
+{
+	font-family: Montserrat !important;
+}
+
+
 /* End of Home page CSS */
 
 
